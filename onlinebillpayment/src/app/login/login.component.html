@@ -1,0 +1,76 @@
+
+        <div class="container">
+                <body>
+            <div class="row">
+                <div class="col-md-10 offset=md-1">
+                    <div class="row">
+                        <div class="col-md-5 register-left"> 
+                                <img src="https://img.icons8.com/carbon-copy/100/000000/expand-arrow.png">
+                            <h3>Join Us</h3>
+                            <p>All your <strong>Bill payments</strong> in one place.If you are the new user join us here!!</p>
+                            <button type="button" class="btn btn-primary" (click)="toSignup()">Sign Up</button>
+                        </div>
+                        <div class="col-md-7 register-right">
+                            <h2>Login</h2>
+                            <div class="alert alert-danger ml-5 mr-5" *ngIf="username.touched && password.touched && !this.authService.validCredentials">Invalid Username / Password</div>
+                            <form [formGroup]="loginForm" (submit)="this.authService.authenticateUser(loginForm.value)">
+                            <div class="register-form">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" class="form-control" placeholder="Enter username" formControlName="username" id="username" required>
+                                    <div class="text-danger" *ngIf="username.touched && username.invalid && username.errors.required">username is required</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label> 
+                                    <input type="password" class="form-control" placeholder="Enter Password" formControlName="password" id="password" required>
+                                    <div class="text-danger" *ngIf="password.touched && password.invalid && password.errors.required">Password is required</div>
+                                    </div>
+                                    <button type="submit"  class="btn btn-primary">Login</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+        </div>
+
+
+
+
+
+<!-- <div class="row">
+    <div class="col-xs-11 mt-5 ml-5 mr-5 mb-5 mx-auto">
+        <div class="card mt-5">
+            <h1 class="mt-5 ml-5">Login</h1>
+
+    <div class="alert alert-danger ml-5 mr-5" *ngIf="username.touched && password.touched && !this.authService.validCredentials">Invalid Username / Password</div>
+          <form [formGroup]="loginForm" (submit)="this.authService.authenticateUser(loginForm.value)">
+                <div class="row mt-5 ml-5 mr-5">
+                    <div class="col-12">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" placeholder="Enter username" formControlName="username" id="username" required>
+                        <div class="text-danger" *ngIf="username.touched && username.invalid && username.errors.required">username is required</div>
+                    </div>
+                </div>
+                <div class="row ml-5 mr-5">
+                    <div class="col-12 mt-5">
+          <label for="password">Password</label> 
+          <input type="password" class="form-control" placeholder="Enter Password" formControlName="password" id="password" required>
+                        <div class="text-danger" *ngIf="password.touched && password.invalid && password.errors.required">Password is required</div>
+                    </div>
+                </div>
+                <div class="row mt-5 ml-5 mr-5 mb-5">
+                    <div class="col-6">
+                        <button type="submit" class="btn cart">Login</button>
+                    </div>
+                    <div class="col">
+                        <div>
+                            New Here? <a (click)="toSignup()">Signup</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->

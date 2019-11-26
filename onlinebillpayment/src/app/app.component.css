@@ -1,0 +1,92 @@
+
+#upbar {
+	background-color: tomato;
+	color: white !important;
+}
+
+.material-icons {
+	vertical-align: middle;
+}
+
+.nav-link {
+	color: white !important;
+}
+
+.footer {
+	background-color: tomato;
+	position: fixed;
+	color: white;
+	width: 100%;
+	bottom: 0;
+}
+
+.price {
+	float: right;
+	color: brown;
+}
+
+.right {
+	color: blue;
+}
+
+.cart {
+	background-color: tomato;
+	color: white;
+}
+
+.right1 {
+	color: white;
+}
+
+.text-color {
+	color: brown;
+}
+
+.btn:hover {
+	color: white;
+}
+
+.launch {
+	font-size: 15px;
+}
+
+.jumbotron {
+	background-image:
+		url("https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+	height: 100%;
+	background-size: cover;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+.color {
+	color: white;
+}
+
+.save:hover {
+	color: white;
+}
+
+.save {
+	background-color: tomato;
+	color: white;
+}
+
+.cartpr {
+	float: right;
+	color: brown;
+}
+
+.gray {
+	color: gray;
+}
+
+.big {
+	font-size: 25px;
+	color: black;
+}
+
+.edit .invalid-feedback {
+	display: block;
+}
