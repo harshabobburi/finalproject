@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cognizant.onlinebillpaymentsystem.OnlineBillpaymentSystemApplication;
 import com.cognizant.onlinebillpaymentsystem.model.Users;
+import com.cognizant.onlinebillpaymentsystem.model.vendor;
 import com.cognizant.onlinebillpaymentsystem.repository.UserRepository;
+import com.cognizant.onlinebillpaymentsystem.repository.VendorRepository;
 
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -26,6 +28,8 @@ public class AuthenticationController {
 	
 	@Autowired
 	UserRepository UserRepository;
+	@Autowired
+	VendorRepository vendorRepository;
 	
 	
 	@GetMapping("/authenticate") 
@@ -40,14 +44,31 @@ public class AuthenticationController {
 		String userid =  getUser(authHeader);
 		authmap.put("username", userid);
 		Users user = UserRepository.findByUserid(userid);
-		String role = user.getRoles().get(0).getName();
-		String firstname = user.getFirstname();
-		String lastname = user.getLastname();
-		authmap.put("role", role);
-		authmap.put("firstname", firstname);
-		authmap.put("lastname", lastname);
-		LOGGER.info("END OF AUTH FUNCTION");
-		return authmap;
+		
+		if(user==null)
+		{
+			vendor vendor =vendorRepository.findByUsername(userid);
+			
+			String role = vendor.getRoles().get(0).getName();
+			String firstname = vendor.getUsername();
+			//String lastname = user.getLastname();
+			authmap.put("role", role);
+			authmap.put("firstname", firstname);
+			//authmap.put("lastname", lastname);
+			LOGGER.info("END OF AUTH FUNCTION");
+			return authmap;
+			
+		}
+		else {
+			String role = user.getRoles().get(0).getName();
+			String firstname = user.getFirstname();
+			String lastname = user.getLastname();
+			authmap.put("role", role);
+			authmap.put("firstname", firstname);
+			authmap.put("lastname", lastname);
+			LOGGER.info("END OF AUTH FUNCTION");
+			return authmap;
+		}
 	}
 	private String getUser(String authHeader){
 		String user=new String(Base64.getDecoder().decode(authHeader.substring(6)));

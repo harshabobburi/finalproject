@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { UserServiceService } from '../service/user-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +13,7 @@ export class SignupComponent implements OnInit {
 
   signupform: FormGroup;
   
-  constructor(private formBuilder:FormBuilder,private userService:UserServiceService) { }
+  constructor(private formBuilder:FormBuilder,private userService:UserServiceService,private router:Router) { }
 
   ngOnInit() {
     this.signupform = this.formBuilder.group({
@@ -26,7 +27,7 @@ export class SignupComponent implements OnInit {
       lastname:['',[
         Validators.required
       ]],
-      Age: ['', [
+      age: ['', [
         Validators.required
       ]],
       gender: ['', [
@@ -59,8 +60,9 @@ export class SignupComponent implements OnInit {
   get lastname() {
     return this.signupform.get('lastname');
   }
-  get Age() {
-    return this.signupform.get('Age');
+  get age()
+  {
+    return this.signupform.get('age')
   }
   get gender() {
     return this.signupform.get('gender');
@@ -94,6 +96,9 @@ export class SignupComponent implements OnInit {
         } else {
           return null;
         }
+      }
+      tologin() {
+        this.router.navigate(['login'])
       }
   
 

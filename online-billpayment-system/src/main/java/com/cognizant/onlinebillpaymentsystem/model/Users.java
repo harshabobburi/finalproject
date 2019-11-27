@@ -30,7 +30,7 @@ public class Users {
 	private String lastname;
 	@NotNull
 	@Column(name="us_age")
-	private int Age;
+	private int age;
 	@NotNull
 	@Column(name="us_gender")
 	private String gender;
@@ -96,12 +96,12 @@ public void setLastname(String lastname) {
 
 
 public int getAge() {
-	return Age;
+	return age;
 }
 
 
 public void setAge(int age) {
-	Age = age;
+	age = age;
 }
 
 
@@ -176,7 +176,7 @@ public void setRoles(List<Role> roles) {
 
 @Override
 public String toString() {
-	return "Users [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", Age=" + Age + ", gender="
+	return "Users [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", age=" + age + ", gender="
 			+ gender + ", contact=" + contact + ", pannumber=" + pannumber + ", aadharnumber=" + aadharnumber
 			+ ", userid=" + userid + ", password=" + password + ", roles=" + roles + "]";
 }

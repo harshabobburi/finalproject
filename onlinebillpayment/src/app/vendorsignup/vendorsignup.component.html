@@ -1,1 +1,178 @@
-<p>vendorsignup works!</p>
+<div class="back1">
+        <div class="container">
+                
+            <div class="row">
+                <div class="col-md-10 offset=md-1">
+                    <div class="row">
+                        <div class="col-md-5 register-left"> 
+                                <img src="https://img.icons8.com/carbon-copy/100/000000/expand-arrow.png">
+                            <h3>Already In!!!!</h3>
+                            <p>That's It you can do all your  <strong>Bill payments</strong> here</p>
+                            <button type="button" class="btn btn-primary" (click)="tologin()">Login</button>
+                        </div>
+                        <div class="col-md-7 register-right">
+                            <h2>Vendor Signup</h2>
+                            <div class="alert-danger" *ngIf="!this.vendorService.vendoruserExists">
+                                    User already Exists
+                                </div>
+                            <form [formGroup]="signupform" (submit)="this.vendorService.addvendorUser(signupform.value)">
+                            <div class="register-form">
+                                <div class="form-group">
+                                        <label for="username">User Name</label>
+                                        <input type="text" class="form-control" placeholder="Enter username" formControlName="username"
+                                            id="username">
+                                        <div class="text-danger"
+                                            *ngIf="username.invalid && username.errors.required && username.touched">
+                                            Name is required</div>
+                                </div>
+                                <div class="form-group">
+                                        <label for="registration_no">Registration number</label>
+                                        <input type="text" class="form-control" placeholder="Enter register Number"
+                                            formControlName="registration_no" id="registration_no">
+                                        <div class="text-danger"
+                                            *ngIf="registration_no.invalid && registration_no.errors.required && registration_no.touched">Registration number
+                                            is required</div>
+                                    </div>
+                                <div class="form-group">
+                                        <label for="vendor_type">Vendor Type</label>
+                                        <input type="text" class="form-control" placeholder="Enter vendor Type"
+                                            formControlName="vendor_type" id="vendor_type">
+                                        <div class="text-danger"
+                                            *ngIf="vendor_type.invalid && vendor_type.errors.required && vendor_type.touched">Vendor Type
+                                            is required</div>
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="address">Address</label>
+                                            <input type="text" class="form-control" placeholder="Enter Address"
+                                                formControlName="address" id="address">
+                                            <div class="text-danger"
+                                                *ngIf="address.invalid && address.errors.required && address.touched">Address is
+                                                required</div>
+                                        </div>
+                                        <div class="form-group">
+                                                 <label for="country">Country</label>
+                                                <input type="text" class="form-control" placeholder="Enter Country"
+                                                    formControlName="country" id="country">
+                                                <div class="text-danger"
+                                                    *ngIf="country.invalid && country.errors.required && country.touched">Country is
+                                                    required</div>
+                                                    <!-- <label for="category">Gender</label>
+                <select class="form-control" id="gender" formControlName="gender" name="gender">
+                    <option hidden ></option>
+                    <option>Male</option>
+                     <option>Female</option>
+                </select> -->
+                <!-- <div class="text-danger"
+                *ngIf="country.invalid && country.errors.required && country.touched">Gender is
+                required</div> -->
+
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="state">State</label>
+                                                <input type="text" class="form-control" placeholder="Enter State"
+                                                    formControlName="state" id="state">
+                                                <div class="text-danger"
+                                                    *ngIf="state.invalid && state.errors.required && state.touched">State is required</div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="vendor_email">Email</label>
+                                                <input type="email" class="form-control" placeholder="Enter Email Information"
+                                                    formControlName="vendor_email" id="vendor_email">
+                                                <div class="text-danger"
+                                                    *ngIf="vendor_email.invalid && vendor_email.errors.required && vendor_email.touched">Email Information
+                                                    is required</div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="contact_number">Contact Number</label>
+                                                <input type="text" class="form-control" placeholder="Enter Contact Details"
+                                                    formControlName="contact_number" id="contact_number">
+                                                <div class="text-danger"
+                                                    *ngIf="contact_number.invalid && contact_number.errors.required && contact_number.touched">Contact Details are
+                                                    required</div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="website">Website Details</label>
+                                                <input type="text" class="form-control" placeholder="Enter Website Details"
+                                                    formControlName="website" id="website">
+                                                <div class="text-danger"
+                                                    *ngIf="website.invalid && website.errors.required && website.touched">Website Details are
+                                                    required</div>
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="certificate_issue_date">Certificate Issue Date</label>
+                                            <input type="date" class="form-control" placeholder="Enter Certiface Issue Details"
+                                                formControlName="certificate_issue_date" id="certificate_issue_date">
+                                            <div class="text-danger"
+                                                *ngIf="certificate_issue_date.invalid && certificate_issue_date.errors.required && certificate_issue_date.touched">Certificate Details are
+                                                required</div>
+                                </div>
+                                <div class="form-group">
+                                        <label for="cert_validity_date">Certiface Validity Details</label>
+                                        <input type="date" class="form-control" placeholder="Enter cert validity date Details"
+                                            formControlName="cert_validity_date" id="cert_validity_date">
+                                        <div class="text-danger"
+                                            *ngIf="cert_validity_date.invalid && cert_validity_date.errors.required && cert_validity_date.touched">Certiface Validity Details are
+                                            required</div>
+                            </div>
+                            <div class="form-group">
+                                    <label for="year_establishment">Establishment Year</label>
+                                    <input type="text" class="form-control" placeholder="Enter Establishment Year Details"
+                                        formControlName="year_establishment" id="year_establishment">
+                                    <div class="text-danger"
+                                        *ngIf="year_establishment.invalid && year_establishment.errors.required && year_establishment.touched">Establishment Details are
+                                        required</div>
+                        </div>
+                        <div class="form-group">
+                                <label for="payment_gateway">Payment Gateway Details</label>
+                                <input type="text" class="form-control" placeholder="Enter Gateway Details"
+                                    formControlName="payment_gateway" id="payment_gateway">
+                                <div class="text-danger"
+                                    *ngIf="payment_gateway.invalid && payment_gateway.errors.required && payment_gateway.touched">Gateway Details are
+                                    required</div>
+                    </div>
+                    <div class="form-group">
+                            <label for="vendor_name">Vendor Details</label>
+                            <input type="text" class="form-control" placeholder="Enter vendor Details"
+                                formControlName="vendor_name" id="vendor_name">
+                            <div class="text-danger"
+                                *ngIf="vendor_name.invalid && vendor_name.errors.required && vendor_name.touched">vendor Details are
+                                required</div>
+                </div>
+                <!-- <div class="form-group">
+                        <label for="payment_gateway">Aadhar Details</label>
+                        <input type="text" class="form-control" placeholder="Enter Aadhar Details"
+                            formControlName="payment_gateway" id="payment_gateway">
+                        <div class="text-danger"
+                            *ngIf="payment_gateway.invalid && payment_gateway.errors.required && payment_gateway.touched">Aadhar Details are
+                            required</div>
+            </div> -->
+                                    <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="password" class="form-control" placeholder="Enter Password"
+                                                formControlName="password" id="password">
+                                            <div class="text-danger"
+                                                *ngIf="password.invalid && password.errors.required && password.touched">Password is
+                                                required</div>
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="confirmPassword">Confirm Password</label>
+                                            <input type="password" class="form-control" placeholder="Enter Confirm Password"
+                                                formControlName="confirmPassword" id="confirmPassword">
+                                            <div class="text-danger" *ngIf="confirmPassword.invalid && confirmPassword.errors.required && confirmPassword.touched">
+                                                Confirm the Password</div>
+                                            <div class="text-danger" *ngIf="signupform.get('confirmPassword').hasError('nomatch')">
+                                                Password and Confirm Password do not match</div>
+                                    </div>
+                                    <button type="submit"  class="btn btn-primary" [disabled]="!signupform.valid">Sign Up</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+
+
+

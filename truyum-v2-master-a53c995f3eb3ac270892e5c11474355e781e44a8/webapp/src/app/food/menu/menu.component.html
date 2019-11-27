@@ -1,0 +1,8 @@
+<div class="card-deck margin">
+ 
+    <div class="row">
+    <div class="col-xl-3 col-md-6" *ngFor="let items of fooditem">
+  <app-item-info [item]= "items" (addToCartclicked)="addToCart($event)"></app-item-info>
+  </div>
+</div>
+</div>

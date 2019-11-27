@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Cart</h1>
+  <div *ngIf="this.cartService.cartempty">
+    <div class="alert alert-danger">No Item in cart. Use 'Add to Cart' option in <a class="list" routerLink="/search-bar">Menu Item List.</a></div>
+  </div>
+  <div *ngIf="!this.cartService.cartempty">
+  <ul class="list-group">
+    <li class="list-group-item"  *ngFor="let Cart of this.cartService.cart.menuItemList">
+      <div class="gray"> 
+        {{Cart.name}}<span class="cartpr">{{Cart.price | currency:'INR'}}</span>
+      </div>
+      <p>
+        <a (click)="removeFromCart(Cart.id)"><i
+          class="material-icons float-right gray">delete_forever</i></a>
+      </p>
+    </li>
+    <li class="list-group-item">
+      <div class="gray">
+        <p class="big">
+          Total<span class="cartpr">{{this.cartService.cart.total | currency:'INR'}}</span>
+        </p>
+      </div>
+    </li>
+  </ul>
+
+</div>
+</div>

@@ -1,0 +1,59 @@
+<div *ngIf="saved">
+<div class="container-fluid mt-5">
+
+    <h1>Edit Menu Item</h1>
+    <form [formGroup]="form" (submit)="onSubmit()">
+        <div class="row mt-5">
+            <div class="col-lg-11 mt-5">
+      <label for="title">Item Name</label>
+      <input type="text" class="form-control" id="title" formControlName="title" [formControl]="title">
+      <div class ="text-danger" *ngIf = "title.errors?.maxlength || title.errors?.minlength"> Food Item Name must be atmost 200 charaters</div>
+      <div class ="text-danger" *ngIf = "title.invalid && title.errors.required"> Name is required</div>
+    </div>
+    <div class="col-lg-11 mt-5">
+        <label for="photoURL">Picture URL</label>
+        <input type="url" class="form-control" id="photoURL" formControlName="photoURL" [formControl]="photoURL">
+        <div class ="text-danger" *ngIf = "photoURL.invalid && photoURL.errors.required"> Photo URL is required</div>
+      </div>
+            <div class="col-lg-3 mt-5">
+      <label for="price">Price</label>
+      <input type="number"	class="form-control" id="price" formControlName="price" [formControl]="price">
+      <div class ="text-danger" *ngIf = "price.invalid && price.errors.required"> Price is required</div>
+            </div>
+            <div class="col-lg-3 mt-5">
+      <label for="dateOfLaunch">Date of Launch</label>
+      <input type="date" class="form-control" id="dateOfLaunch" formControlName="dateOfLaunch" [formControl]="dateOfLaunch">
+      <div class ="text-danger" *ngIf = "dateOfLaunch.invalid && dateOfLaunch.errors.required"> Date of Launch is required</div>   
+            </div>
+            <div class="col-lg-3 mt-5">
+      <label for="category">Category</label>
+                <select class="form-control" id="category" formControlName="category" name="category">
+                    <option hidden></option>
+                    <option *ngFor="let category of categories" [ngValue]="category" >{{category}}</option>
+                </select>
+      <div class ="text-danger" *ngIf = "category.invalid && category.errors.required"> Category is required</div>
+            </div>
+
+
+
+            <div class="col-lg-3 mt-5">
+                <div>Active</div>
+      <input type="radio" class="radio-inline mt-3" [value]=true id="yes" formControlName="active" [formControl]="active">
+      <label for="yes" class="pl-2"> Yes </label>
+      <input type="radio" class="radio-inline mt-3 ml-3" formControlName="active" [value]=false value="no" id="no">
+      <label for="no" class="pl-2"> No</label>
+      <div class ="text-danger" *ngIf = "active.invalid && active.errors.required"> Stock Status is required</div>
+    </div>
+
+
+
+    
+            <div class="col-lg-12 mt-5">
+                <input type="checkbox" class="checkbox-inline" formControlName="freeDelivery" id="freeDelivery"  [formControl]="freeDelivery">
+                <label for="freeDelivery" class="pl-2">Free Delivery</label>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-success mt-5" value="Save">
+    </form>
+</div>
+</div>

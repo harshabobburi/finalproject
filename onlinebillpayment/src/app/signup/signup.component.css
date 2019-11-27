@@ -1,92 +1,84 @@
-
-#upbar {
-	background-color: tomato;
-	color: white !important;
+.back1
+{
+    background-image: linear-gradient(to right,#ff5722,#ff9800);
+    /* margin-top: 100px !important; */
+}
+.register-left{
+    text-align: center;
+    color: #fff;
+    padding: 30px;
+}
+.register-left img{
+    /* animation: mover is infinite alternate;
+    margin-top: 5px;
+    margin-bottom: 18px;
+    width: 100px; */
+    -webkit-animation: action 1s infinite  alternate;
+        animation: action 1s infinite  alternate;
+    
+}
+.register-right{
+    padding: 20px 20px 0;
+}
+.register-left .btn-primary{
+    border-radius: 1.5rem;
+    border: none;
+    width: 120px;
+    background: #f8f8f8;
+    font-weight: 600;
+    color: #555;
+    margin-top: 20px;
+    padding: 10px;
+}
+.register-left .btn-primary:hover
+{
+    background: #000;
+}
+.register-right{
+    border: none;
+    background: #f8f8f8;
+    border-top-left-radius: 50% 80%;
+    border-bottom-left-radius: 50% 80%;
+    padding: 70px;
+}
+.register-right h2{
+    text-align: center;
+    margin-bottom: 10px;
+    color: #555;
+}
+.register-form{
+    padding: 30px;
+}
+.register-right .btn-primary{
+    float: right;
+    border-radius: 1.5rem;
+    border: none;
+    width: 120px;
+    background: #ff9800;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 20px;
+    padding: 10px;
+}
+.register-right .btn-primary:hover
+{
+    background: #ff5722;
 }
 
-.material-icons {
-	vertical-align: middle;
+/* @keyframes mover
+{
+    0%, 100% {
+        bottom: 0;
+      }
+      50% {
+        bottom: 100px;
+      }
+} */
+@-webkit-keyframes action {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-40px); }
 }
-
-.nav-link {
-	color: white !important;
-}
-
-.footer {
-	background-color: tomato;
-	position: fixed;
-	color: white;
-	width: 100%;
-	bottom: 0;
-}
-
-.price {
-	float: right;
-	color: brown;
-}
-
-.right {
-	color: blue;
-}
-
-.cart {
-	background-color: tomato;
-	color: white;
-}
-
-.right1 {
-	color: white;
-}
-
-.text-color {
-	color: brown;
-}
-
-.btn:hover {
-	color: white;
-}
-
-.launch {
-	font-size: 15px;
-}
-
-.jumbotron {
-	background-image:
-		url("https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
-	height: 100%;
-	background-size: cover;
-	width: 100%;
-	position: relative;
-	overflow: hidden;
-}
-
-.color {
-	color: white;
-}
-
-.save:hover {
-	color: white;
-}
-
-.save {
-	background-color: tomato;
-	color: white;
-}
-
-.cartpr {
-	float: right;
-	color: brown;
-}
-
-.gray {
-	color: gray;
-}
-
-.big {
-	font-size: 25px;
-	color: black;
-}
-
-.edit .invalid-feedback {
-	display: block;
+@keyframes action {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-40px); }
 }

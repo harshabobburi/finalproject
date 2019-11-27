@@ -1,123 +1,121 @@
-<div class="container">
-	<div class="row justify-content-center">
-		<div class="card mt-5">
-			<div class="card-body">
-				<h1>Signup</h1>
-				<form [formGroup]="signupform" (submit)="this.userService.addUser(signupform.value)">
+<div class="back1">
+        <div class="container">
+                
+            <div class="row">
+                <div class="col-md-10 offset=md-1">
+                    <div class="row">
+                        <div class="col-md-5 register-left"> 
+                                <img src="https://img.icons8.com/carbon-copy/100/000000/expand-arrow.png">
+                            <h3>Already In!!!!</h3>
+                            <p>That's It you can do all your  <strong>Bill payments</strong> here</p>
+                            <button type="button" class="btn btn-primary" (click)="tologin()">Login</button>
+                        </div>
+                        <div class="col-md-7 register-right">
+                            <h2>Signup</h2>
+                            <div class="alert-danger" *ngIf="!this.userService.userExists">
+                                    User already Exists
+                                </div>
+                            <form [formGroup]="signupform" (submit)="this.userService.addUser(signupform.value)">
+                            <div class="register-form">
+                                <div class="form-group">
+                                        <label for="userid">User Id</label>
+                                        <input type="text" class="form-control" placeholder="Enter userid" formControlName="userid"
+                                            id="userid">
+                                        <div class="text-danger"
+                                            *ngIf="userid.invalid && userid.errors.required && userid.touched">
+                                            Username is required</div>
+                                </div>
+                                <div class="form-group">
+                                        <label for="firstname">First Name</label>
+                                        <input type="text" class="form-control" placeholder="Enter First Name"
+                                            formControlName="firstname" id="firstname">
+                                        <div class="text-danger"
+                                            *ngIf="firstname.invalid && firstname.errors.required && firstname.touched">First Name
+                                            is required</div>
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="lastname">Last Name</label>
+                                            <input type="text" class="form-control" placeholder="Enter Last Name"
+                                                formControlName="lastname" id="lastname">
+                                            <div class="text-danger"
+                                                *ngIf="lastname.invalid && lastname.errors.required && lastname.touched">Last Name is
+                                                required</div>
+                                        </div>
+                                        <div class="form-group">
+                                                 <label for="gender">Gender</label>
+                                                <input type="text" class="form-control" placeholder="Enter Gender"
+                                                    formControlName="gender" id="gender">
+                                                <div class="text-danger"
+                                                    *ngIf="gender.invalid && gender.errors.required && gender.touched">Gender is
+                                                    required</div>
+                                                    <!-- <label for="category">Gender</label>
+                <select class="form-control" id="gender" formControlName="gender" name="gender">
+                    <option hidden ></option>
+                    <option>Male</option>
+                     <option>Female</option>
+                </select> -->
+                <!-- <div class="text-danger"
+                *ngIf="gender.invalid && gender.errors.required && gender.touched">Gender is
+                required</div> -->
 
-					<!--Alerts for invalid details-->
-					<div class="alert-danger" *ngIf="!this.userService.userExists">
-						User already Exists
-					</div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="age">Age</label>
+                                                <input type="number" class="form-control" placeholder="Enter Age"
+                                                    formControlName="age" id="age">
+                                                <div class="text-danger"
+                                                    *ngIf="age.invalid && age.errors.required && age.touched">Age is required</div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="contact">Contact</label>
+                                                <input type="number" class="form-control" placeholder="Enter Contact Information"
+                                                    formControlName="contact" id="contact">
+                                                <div class="text-danger"
+                                                    *ngIf="contact.invalid && contact.errors.required && contact.touched">Contact Information
+                                                    is required</div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="pannumber">Pan</label>
+                                                <input type="text" class="form-control" placeholder="Enter pannumber Details"
+                                                    formControlName="pannumber" id="pannumber">
+                                                <div class="text-danger"
+                                                    *ngIf="pannumber.invalid && pannumber.errors.required && pannumber.touched">Pan Details are
+                                                    required</div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="aadharnumber">Aadhar Details</label>
+                                                <input type="text" class="form-control" placeholder="Enter Aadhar Details"
+                                                    formControlName="aadharnumber" id="aadharnumber">
+                                                <div class="text-danger"
+                                                    *ngIf="aadharnumber.invalid && aadharnumber.errors.required && aadharnumber.touched">Aadhar Details are
+                                                    required</div>
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="password" class="form-control" placeholder="Enter Password"
+                                                formControlName="password" id="password">
+                                            <div class="text-danger"
+                                                *ngIf="password.invalid && password.errors.required && password.touched">Password is
+                                                required</div>
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="confirmPassword">Confirm Password</label>
+                                            <input type="password" class="form-control" placeholder="Enter Confirm Password"
+                                                formControlName="confirmPassword" id="confirmPassword">
+                                            <div class="text-danger" *ngIf="confirmPassword.invalid && confirmPassword.errors.required && confirmPassword.touched">
+                                                Confirm the Password</div>
+                                            <div class="text-danger" *ngIf="signupform.get('confirmPassword').hasError('nomatch')">
+                                                Password and Confirm Password do not match</div>
+                                    </div>
+                                    <button type="submit"  class="btn btn-primary" [disabled]="!signupform.valid">Sign Up</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
 
-					<!--Username Details-->
-					<div class="row form-group">
-						<label for="userid">userid</label>
-						<input type="text" class="form-control" placeholder="Enter userid" formControlName="userid"
-							id="userid">
-						<div class="validation-text"
-							*ngIf="userid.invalid && userid.errors.required && userid.touched">
-							Username is required</div>
-					</div>
 
-					<!--First Name and Last Name Detailss-->
-					<div class="row">
-						<div class="form-group mr-5">
-							<label for="firstname">First Name</label>
-							<input type="text" class="form-control" placeholder="Enter First Name"
-								formControlName="firstname" id="firstname">
-							<div class="validation-text"
-								*ngIf="firstname.invalid && firstname.errors.required && firstname.touched">First Name
-								is required</div>
-						</div>
-
-						<div class="form-group">
-							<label for="lastname">Last Name</label>
-							<input type="text" class="form-control" placeholder="Enter Last Name"
-								formControlName="lastname" id="lastname">
-							<div class="validation-text"
-								*ngIf="lastname.invalid && lastname.errors.required && lastname.touched">Last Name is
-								required</div>
-						</div>
-					</div>
-						<!-- gender and age-->
-					<div class="row">
-							<div class="form-group mr-5">
-									<label for="gender">Gender</label>
-									<input type="text" class="form-control" placeholder="Enter Gender"
-										formControlName="gender" id="gender">
-									<div class="validation-text"
-										*ngIf="gender.invalid && gender.errors.required && gender.touched">Gender is
-										required</div>
-								</div>
-	
-							<div class="form-group">
-								<label for="Age">Age</label>
-								<input type="number" class="form-control" placeholder="Enter Age"
-									formControlName="Age" id="Age">
-								<div class="validation-text"
-									*ngIf="Age.invalid && Age.errors.required && Age.touched">Age is required</div>
-							</div>
-						</div>
-
-						<div class="row">
-								<div class="form-group mr-5">
-									<label for="contact">Contact</label>
-									<input type="number" class="form-control" placeholder="Enter Contact Information"
-										formControlName="contact" id="contact">
-									<div class="validation-text"
-										*ngIf="contact.invalid && contact.errors.required && contact.touched">Contact Information
-										is required</div>
-								</div>
-		
-								<div class="form-group">
-									<label for="pannumber">Pan</label>
-									<input type="text" class="form-control" placeholder="Enter pannumber Details"
-										formControlName="pannumber" id="pannumber">
-									<div class="validation-text"
-										*ngIf="pannumber.invalid && pannumber.errors.required && pannumber.touched">Pan Details are
-										required</div>
-								</div>
-							</div>
-
-							
-						<div class="row">
-								<div class="form-group">
-									<label for="aadharnumber">Aadhar Details</label>
-									<input type="text" class="form-control" placeholder="Enter Aadhar Details"
-										formControlName="aadharnumber" id="aadharnumber">
-									<div class="validation-text"
-										*ngIf="aadharnumber.invalid && aadharnumber.errors.required && aadharnumber.touched">Aadhar Details are
-										required</div>
-								</div>
-							</div>
-					<!-- Password Details-->
-					<div class="row">
-						<div class="form-group mr-5">
-							<label for="password">Password</label>
-							<input type="password" class="form-control" placeholder="Enter Password"
-								formControlName="password" id="password">
-							<div class="validation-text"
-								*ngIf="password.invalid && password.errors.required && password.touched">Password is
-								required</div>
-						</div>
-						<!-- Confirm Password -->
-						<div class="form-group">
-							<label for="confirmPassword">Confirm Password</label>
-							<input type="password" class="form-control" placeholder="Enter Confirm Password"
-								formControlName="confirmPassword" id="confirmPassword">
-							<div class="text-danger" *ngIf="confirmPassword.invalid && confirmPassword.errors.required && confirmPassword.touched">
-								Confirm the Password</div>
-							<div class="text-danger" *ngIf="signupform.get('confirmPassword').hasError('nomatch')">
-								Password and Confirm Password do not match</div>
-						</div>
-					</div>
-					<!-- Signup Button submit form-->
-					<div class="row">
-						<button type="submit" class="btn btn-custom" [disabled]="!signupform.valid">Signup</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
