@@ -1,5 +1,6 @@
 export interface vendor
 {
+    id:number;
     vendor_name:string;
     registration_no:string;
     vendor_type:string;
@@ -15,5 +16,6 @@ export interface vendor
     payment_gateway:string;
     username:string;
     password:string;
+   
 
 }

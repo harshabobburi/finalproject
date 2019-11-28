@@ -12,7 +12,7 @@
                         </div>
                         <div class="col-md-7 register-right">
                             <h2>Signup</h2>
-                            <div class="alert-danger" *ngIf="!this.userService.userExists">
+                            <div class="alert-danger" *ngIf="this.userService.userExists">
                                     User already Exists
                                 </div>
                             <form [formGroup]="signupform" (submit)="this.userService.addUser(signupform.value)">

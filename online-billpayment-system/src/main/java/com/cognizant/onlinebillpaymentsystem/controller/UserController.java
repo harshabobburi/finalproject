@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cognizant.onlinebillpaymentsystem.exception.UserAlreadyExistsException;
 import com.cognizant.onlinebillpaymentsystem.model.Users;
 import com.cognizant.onlinebillpaymentsystem.repository.UserRepository;
 import com.cognizant.onlinebillpaymentsystem.service.AppUserDetailsService;
@@ -46,10 +47,10 @@ public class UserController {
 
 	}
 	@PostMapping
-	public boolean signup(@RequestBody @Valid Users user) 
+	public void signup(@RequestBody @Valid Users user) throws UserAlreadyExistsException
 	{
 
-			return appuserdetailsservice.signup(user);
+			appuserdetailsservice.signup(user);
 		
 	}
 	

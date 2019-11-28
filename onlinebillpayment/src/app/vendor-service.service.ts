@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { vendor } from './vendorsignup/vendor';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { AuthServiceService } from './service/auth-service.service';
 
 
 @Injectable({
@@ -11,19 +12,19 @@ import { environment } from 'src/environments/environment';
 })
 export class VendorServiceService {
 
-  vendoruserExists:boolean=true;
+  vendoruserExists:boolean=false;
+  subject = new Subject<string>();
+
   
-  constructor(private router:Router,private httpclient:HttpClient) { }
+  constructor(private router:Router,private httpclient:HttpClient,private authservice:AuthServiceService) { }
   addvendorUser(vendor:any)
   {
-    let NewvendorUsers:vendor={vendor_name:vendor["vendor_name"],registration_no:vendor["registration_no"],vendor_type:vendor["vendor_type"],address:vendor["address"],country:vendor["country"],state:vendor["state"],vendor_email:vendor["vendor_email"],contact_number:vendor["contact_number"],password:vendor["password"],website:vendor["website"],certificate_issue_date:vendor["certificate_issue_date"],cert_validity_date:vendor["cert_validity_date"],year_establishment:vendor["year_establishment"],payment_gateway:vendor["payment_gateway"],username:vendor["username"]}
+    let NewvendorUsers:vendor={id:vendor["id"],vendor_name:vendor["vendor_name"],registration_no:vendor["registration_no"],vendor_type:vendor["vendor_type"],address:vendor["address"],country:vendor["country"],state:vendor["state"],vendor_email:vendor["vendor_email"],contact_number:vendor["contact_number"],password:vendor["password"],website:vendor["website"],certificate_issue_date:vendor["certificate_issue_date"],cert_validity_date:vendor["cert_validity_date"],year_establishment:vendor["year_establishment"],payment_gateway:vendor["payment_gateway"],username:vendor["username"]}
     this.addvendorUsers(NewvendorUsers).subscribe(data=>{
       this.vendoruserExists=data;
-      if(data)
-      {
-        
+      this.vendoruserExists=false;
+     
         this.router.navigate(['vendorlogin'])
-      }
     },
     (error)=>{
       this.vendoruserExists=true;
@@ -36,7 +37,41 @@ export class VendorServiceService {
   
   addvendorUsers(vendor:vendor):Observable<any>
   {
+    //  let headers = new HttpHeaders();
+    //  headers = headers.set('Authorization','Bearer ' + this.authservice.getToken())
     console.log(vendor)
     return this.httpclient.post<vendor>(environment.baseUrl+'vendors',vendor)
   }
+
+  getvendor(username:String)
+  {
+    const headers = new HttpHeaders({Authorization: 'Bearer ' +this.authservice.accessToken});
+      return this.httpclient.get<vendor>(`${environment.baseUrl}`+`vendors`+"/"+username,{headers});
+
+
+  }
+  getallvendors():Observable<any>
+
+  {
+    const headers = new HttpHeaders({Authorization: 'Bearer ' +this.authservice.accessToken});
+    return this.httpclient.get<vendor>(environment.baseUrl+"vendors",{headers})
+  }
+
+  updatevendors(vendor:vendor):Observable<any>
+  {
+    const headers = new HttpHeaders({Authorization: 'Bearer ' +this.authservice.accessToken});
+      return this.httpclient.put<vendor>(`${environment.baseUrl}`+'vendors'+"/",vendor,{headers});
+  }
+  updatevendor(vendor:vendor,username:string)
+  {
+    const headers = new HttpHeaders({Authorization: 'Bearer ' +this.authservice.accessToken});
+      return this.httpclient.put<void>(`${environment.baseUrl}`+'vendors'+"/"+username,vendor,{headers});
+
+  }
+  getSubject():Subject<string>
+  {
+    return this.subject
+  }
+
+
 }

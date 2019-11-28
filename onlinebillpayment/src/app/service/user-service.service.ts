@@ -11,7 +11,7 @@ import { vendor } from '../vendorsignup/vendor';
 })
 export class UserServiceService {
 
-  userExists:boolean=true;
+  userExists:boolean=false;
   
   constructor(private router:Router,private httpclient:HttpClient) { }
 
@@ -19,17 +19,14 @@ export class UserServiceService {
     let NewUsers:user={firstname:user["firstname"],lastname:user["lastname"],age:user["age"],gender:user["gender"],contact:user["contact"],pannumber:user["pannumber"],aadharnumber:user["aadharnumber"],userid:user["userid"],password:user["password"]}
     this.addUsers(NewUsers).subscribe(data=>{
       this.userExists=data;
-      if(data)
-      {
+      this.userExists=false
         
         this.router.navigate(['login'])
-      }
     },
     (error)=>{
       this.userExists=true;
       console.log(error)
-    }
-    )
+    })
   }
   
   addUsers(user:user):Observable<any>

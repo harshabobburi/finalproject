@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.cognizant.onlinebillpaymentsystem.model.vendor;
 
-public interface VendorRepository extends CrudRepository<vendor, Integer>{
+public interface VendorRepository extends CrudRepository<vendor, String>{
 
 	vendor findByUsername(String username);
 	

@@ -12,11 +12,15 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.cognizant.onlinebillpaymentsystem.exception.VendorAlreadyExistsException;
 import com.cognizant.onlinebillpaymentsystem.model.Role;
+import com.cognizant.onlinebillpaymentsystem.model.Users;
 import com.cognizant.onlinebillpaymentsystem.model.appvendor;
 import com.cognizant.onlinebillpaymentsystem.model.vendor;
 import com.cognizant.onlinebillpaymentsystem.repository.RoleRepository;
+import com.cognizant.onlinebillpaymentsystem.repository.UserRepository;
 import com.cognizant.onlinebillpaymentsystem.repository.VendorRepository;
+
 @Service
 public class vendorDetailService implements UserDetailsService{
 
@@ -26,6 +30,8 @@ private static final Logger LOGGER = LoggerFactory.getLogger(vendorDetailService
 	private RoleRepository rolerepository;
 	@Autowired
 	private VendorRepository vendorrepository;
+	@Autowired
+	private UserRepository userrepository;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -46,9 +52,14 @@ private static final Logger LOGGER = LoggerFactory.getLogger(vendorDetailService
 		super();
 		this.vendorrepository = vendorrepository;
 	}
-	public boolean vendorsignup(vendor newuser){
+	public void vendorsignup(vendor newuser) throws VendorAlreadyExistsException{
         vendor u=vendorrepository.findByUsername(newuser.getUsername());
-        if(u==null)
+        Users user = userrepository.findByUserid(newuser.getUsername());
+        if(u!= null || user!=null)
+        {
+        	throw new VendorAlreadyExistsException();
+        }
+        else
         {
             String password=newuser.getPassword();
             BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
@@ -59,10 +70,14 @@ private static final Logger LOGGER = LoggerFactory.getLogger(vendorDetailService
             newuser.setRoles(roleset);
             newuser.setPassword(newpassword);
             vendorrepository.save(newuser);
-            return true;
         }
-        else
-            return false;
+        
    }
-
+//	public vendor getVendordetails(String username)
+//	{
+//		Optional<vendor> result = vendorrepository.findByUsername(username);	
+//		vendor vendor = result.get();
+//			 return vendor;
+//
+//}
 }

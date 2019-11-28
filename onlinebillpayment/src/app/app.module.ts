@@ -9,13 +9,17 @@ import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VendorloginComponent } from './vendorlogin/vendorlogin.component';
 import { VendorsignupComponent } from './vendorsignup/vendorsignup.component';
+import { VendoreditComponent } from './vendoredit/vendoredit.component';
+import { VendorinfoComponent } from './vendorinfo/vendorinfo.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
     VendorloginComponent,
-    VendorsignupComponent
+    VendorsignupComponent,
+    VendoreditComponent,
+    VendorinfoComponent
   ],
   imports: [
     BrowserModule,

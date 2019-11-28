@@ -12,11 +12,14 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.cognizant.onlinebillpaymentsystem.exception.UserAlreadyExistsException;
 import com.cognizant.onlinebillpaymentsystem.model.AppUser;
 import com.cognizant.onlinebillpaymentsystem.model.Role;
 import com.cognizant.onlinebillpaymentsystem.model.Users;
+import com.cognizant.onlinebillpaymentsystem.model.vendor;
 import com.cognizant.onlinebillpaymentsystem.repository.RoleRepository;
 import com.cognizant.onlinebillpaymentsystem.repository.UserRepository;
+import com.cognizant.onlinebillpaymentsystem.repository.VendorRepository;
 
 
 @Service
@@ -29,6 +32,8 @@ public class AppUserDetailsService implements UserDetailsService{
 	public UserRepository userRepository;
 	@Autowired
 	private RoleRepository rolerepository;
+	@Autowired
+	private VendorRepository vendorrepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String userid) throws UsernameNotFoundException {
@@ -50,9 +55,14 @@ public class AppUserDetailsService implements UserDetailsService{
 		super();
 		this.userRepository = userRepository;
 	}
-	public boolean signup(Users newuser){
+	public void signup(Users newuser) throws UserAlreadyExistsException{
         Users u=userRepository.findByUserid(newuser.getUserid());
-        if(u==null)
+        vendor vendor = vendorrepository.findByUsername(newuser.getUserid());
+        if(u!=null || vendor!=null)
+        {
+        	throw new UserAlreadyExistsException();
+        }
+        else
         {
             String password=newuser.getPassword();
             BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
@@ -63,10 +73,7 @@ public class AppUserDetailsService implements UserDetailsService{
             newuser.setRoles(roleset);
             newuser.setPassword(newpassword);
             userRepository.save(newuser);
-            return true;
         }
-        else
-            return false;
    }
 
 	

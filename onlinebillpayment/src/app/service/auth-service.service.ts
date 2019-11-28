@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,11 @@ export class AuthServiceService {
   clickedOnAdd:boolean=false;
   addedToCart:boolean=false;
   username:string;
+  isuser:boolean = false;
+  isvendor:boolean=false;
+
+
+  category:string
   
   
 
@@ -62,16 +68,23 @@ export class AuthServiceService {
       (data)=>{
         console.log(data)
         this.role=data.role;
+        this.category=data.role
         this.loggedInUser = user.username;
         this.validCredentials = true;
+        this.username = user.username;
         if(data.role == 'ADMIN')
           this.isAdmin = true;
+          else if(data.role == 'USER')
+          this.isuser = true
+          else if(data.role == 'VENDOR')
+          this.isvendor=true;
         this.loggedIn = true;
         // this.foodService.isLoggedIn = true;
         // this.setToken(data.token);
         this.accessToken=data.token;
         console.log(this.accessToken)
-        // this.router.navigate(['search-bar']);
+       this.router.navigate(['vendorinfo']);
+      
       },
       (error)=>{
         this.validCredentials = false;
