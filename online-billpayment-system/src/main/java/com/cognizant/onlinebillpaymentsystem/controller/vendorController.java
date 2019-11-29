@@ -5,7 +5,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cognizant.onlinebillpaymentsystem.exception.ResourceNotFoundException;
 import com.cognizant.onlinebillpaymentsystem.exception.VendorAlreadyExistsException;
 import com.cognizant.onlinebillpaymentsystem.model.vendor;
 import com.cognizant.onlinebillpaymentsystem.repository.VendorRepository;
@@ -48,10 +46,13 @@ public class vendorController {
 		
 	}
 	@GetMapping("/vendors/{username}")
-    public ResponseEntity<vendor> getvendorByusername(@PathVariable String username)
-        throws ResourceNotFoundException {
-        vendor vendor = vendorrepository.findByUsername(username);
-        return ResponseEntity.ok().body(vendor);
+//    public ResponseEntity<vendor> getvendorByusername(@PathVariable String username)
+//        throws ResourceNotFoundException {
+//        vendor vendor = vendorrepository.findByUsername(username);
+//        return ResponseEntity.ok().body(vendor);
+	public vendor getvendor(@PathVariable String username)
+	{
+		return vendorservice.getvendor(username);
     }
     @PutMapping("vendors/")
     public void modifyvendor(@RequestBody vendor vendor)

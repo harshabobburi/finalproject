@@ -2,6 +2,7 @@ package com.cognizant.onlinebillpaymentsystem.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -63,6 +65,19 @@ public class Users {
         joinColumns = @JoinColumn(name = "ur_us_id"), 
         inverseJoinColumns = @JoinColumn(name = "ur_ro_id"))
  private List<Role> roles;
+ 
+ @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+ private List<Bill> bills;
+
+
+//public List<Bill> getBills() {
+//	return bills;
+//}
+
+
+public void setBills(List<Bill> bills) {
+	this.bills = bills;
+}
 
 
 public int getId() {
@@ -101,7 +116,7 @@ public int getAge() {
 
 
 public void setAge(int age) {
-	age = age;
+	this.age = age;
 }
 
 
@@ -180,6 +195,8 @@ public String toString() {
 			+ gender + ", contact=" + contact + ", pannumber=" + pannumber + ", aadharnumber=" + aadharnumber
 			+ ", userid=" + userid + ", password=" + password + ", roles=" + roles + "]";
 }
+
+
 
 
 

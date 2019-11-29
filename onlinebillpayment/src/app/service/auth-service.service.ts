@@ -83,7 +83,7 @@ export class AuthServiceService {
         // this.setToken(data.token);
         this.accessToken=data.token;
         console.log(this.accessToken)
-       this.router.navigate(['vendorinfo']);
+       this.router.navigate(['display']);
       
       },
       (error)=>{

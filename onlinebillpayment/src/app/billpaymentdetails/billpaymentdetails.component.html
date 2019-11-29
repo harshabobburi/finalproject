@@ -1,0 +1,28 @@
+<body>
+
+    <div *ngFor="let bill of bills ">
+        <h2 style="text-align:center">Bill Details</h2>
+        
+        <div class="card">
+         <tr>
+             <td><strong>Bill Type:</strong></td><td>{{bill.vendor.vendor_type}}</td>
+         </tr>
+         <tr>
+                <td>Vendor Name:</td><td>{{bill.vendor.vendor_name}}</td>
+            </tr>
+            <tr>
+                    <td>User Name:</td><td>{{bill.user.userid}}</td>
+                </tr>
+                <tr>
+                        <td>Consumer Number:</td><td>{{bill.consumer_id}}</td>
+                    </tr>
+                    <tr>
+                            <td>Bill Amount:</td><td>{{bill.amount}}</td>
+                        </tr>
+                        <div class="mt-2">
+          <p><button>Save</button></p>
+          <p><button>Pay</button></p>
+          </div>
+        </div>
+    </div>
+        </body>

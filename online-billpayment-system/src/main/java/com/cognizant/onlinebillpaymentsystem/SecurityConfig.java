@@ -62,6 +62,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.anyRequest();
 		httpSecurity.csrf().disable().httpBasic().and().authorizeRequests().antMatchers("/vendors").permitAll()
 		.anyRequest();
+		httpSecurity.csrf().disable().httpBasic().and().authorizeRequests().antMatchers("/billpayments").permitAll()
+		.anyRequest();
 		httpSecurity.csrf().disable().httpBasic().and().authorizeRequests().antMatchers("/menu-items").permitAll()
 				.anyRequest().authenticated().and().addFilter(new JwtAuthorizationFilter(authenticationManager()));
 

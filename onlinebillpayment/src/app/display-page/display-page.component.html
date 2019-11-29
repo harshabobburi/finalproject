@@ -1,0 +1,12 @@
+ <div *ngIf="authservice.username" >
+                    <app-search-component></app-search-component>
+                    <div class="card-deck">
+
+                        <div class="col 6">
+                            <div class="row mx-auto">
+                            <app-vendor-details [vendor]="vendor" *ngFor="let vendor of vendor"></app-vendor-details>
+                        </div>
+                        </div>
+                    </div>
+
+                </div>

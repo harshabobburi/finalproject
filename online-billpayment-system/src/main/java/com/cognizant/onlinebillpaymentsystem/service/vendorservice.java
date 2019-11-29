@@ -37,4 +37,13 @@ public class vendorservice {
 		else
 		return false;
 	}
+	public vendor getvendor(String username)
+	{
+		vendor vendor = vendorrepository.findByUsername(username);
+		if(vendor.getUsername().equalsIgnoreCase(username))
+		{
+			return vendor;
+		}
+		return null;
+	}
 }

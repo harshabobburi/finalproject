@@ -1,0 +1,30 @@
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+             <div class="well profile">
+                <div class="col-sm-12">
+                    <div class="col-xs-12 col-xs-12">
+                        <h2>Vendor Details</h2>
+                        <p><strong>Service Type: </strong> {{vendor.vendor_type}} </p>
+                        <p><strong>Vendor Name: </strong> {{vendor.vendor_name}} </p>
+                        <p><strong>Website: </strong> {{vendor.website}} </p>
+                        <p><strong>Payment Gate: </strong>
+                            <span class="tags">{{vendor.payment_gateway}}</span> 
+                        </p>
+                    </div>  
+                
+                    <div class="col-xs-12 divider text-center">
+                <div class="col-xs-12 col-sm-12 emphasis">                   
+                    <p><small>Bill Details</small></p>
+                    <a (click)="displaydetails()">
+                    <button class="btn btn-success btn-block" type="button" [routerLink]="['/billpayments',vendor.username]"><span class="fa fa-plus-circle"></span> Bill Details </button>
+                </a>
+                </div>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        </div>
+              
+        

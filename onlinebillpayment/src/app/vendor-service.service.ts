@@ -43,7 +43,7 @@ export class VendorServiceService {
     return this.httpclient.post<vendor>(environment.baseUrl+'vendors',vendor)
   }
 
-  getvendor(username:String)
+  getvendor(username:String):Observable<any>
   {
     const headers = new HttpHeaders({Authorization: 'Bearer ' +this.authservice.accessToken});
       return this.httpclient.get<vendor>(`${environment.baseUrl}`+`vendors`+"/"+username,{headers});

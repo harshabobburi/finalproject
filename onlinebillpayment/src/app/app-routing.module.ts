@@ -6,6 +6,10 @@ import { VendorloginComponent } from './vendorlogin/vendorlogin.component';
 import { VendorsignupComponent } from './vendorsignup/vendorsignup.component';
 import { VendoreditComponent } from './vendoredit/vendoredit.component';
 import { VendorinfoComponent } from './vendorinfo/vendorinfo.component';
+import { DisplayPageComponent } from './display-page/display-page.component';
+import { SearchComponentComponent } from './search-component/search-component.component';
+import { OnlinebillsComponent } from './onlinebills/onlinebills.component';
+import { BillpaymentdetailsComponent } from './billpaymentdetails/billpaymentdetails.component';
 
 
 const routes: Routes = [
@@ -14,7 +18,11 @@ const routes: Routes = [
   { path: 'vendorlogin', component: VendorloginComponent},
   { path: 'vendorsignup', component: VendorsignupComponent},
   { path: 'edit', component: VendoreditComponent},
-  { path: 'vendorinfo', component: VendorinfoComponent}
+  { path: 'vendorinfo', component: VendorinfoComponent},
+  { path: 'appsearch', component: SearchComponentComponent},
+  { path: 'billpayments/:username', component: BillpaymentdetailsComponent},
+  { path: 'display', component: DisplayPageComponent},
+
 
 
 

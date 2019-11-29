@@ -3,6 +3,7 @@ package com.cognizant.onlinebillpaymentsystem.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -84,6 +86,17 @@ public class vendor {
 	@ManyToMany
 	@JoinTable(name = "vn_role", joinColumns = @JoinColumn(name = "vnr_vn_id"), inverseJoinColumns = @JoinColumn(name = "vnr_ro_id"))
 	private List<Role> roles;
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	 private List<Bill> bills;
+	
+
+//	public List<Bill> getBills() {
+//		return bills;
+//	}
+
+	public void setBills(List<Bill> bills) {
+		this.bills = bills;
+	}
 
 	public int getId() {
 		return id;
@@ -230,6 +243,8 @@ public class vendor {
 				+ ", year_establishment=" + year_establishment + ", payment_gateway=" + payment_gateway + ", username="
 				+ username + ", password=" + password + ", roles=" + roles + "]";
 	}
+
+	
 
 	
 	
