@@ -1,1 +1,244 @@
-<h1>Welcome</h1>
+<h1>Payment Gateway</h1>
+
+
+
+<!-- <br>
+
+Payment Gateway : {{items.vendor.payment_gateway}}
+<br>
+
+Consumer Id : {{items.consumer_id}}
+<br> -->
+<body>
+    <div *ngIf="paidSuccess">
+        Thank You for Paying
+      </div>
+    <div class="card mb-4" style="width: 20rem;" *ngIf="items.vendor.payment_gateway==='Debit/Credit Card' && !paidSuccess">
+<div class="row">
+        <div class="col-75">
+          <div class="container">
+            <form action="/action_page.php">
+            
+              <div class="row">
+                <div class="col-50">
+                  <h3>Billing Address</h3>
+                  <label for="fname"><i class="fa fa-user"></i> Consumer Id</label>
+                  <input type="text" id="fname" name="firstname" placeholder="{{items.consumer_id}}" disabled>
+                  <label for="email"><i class="fa fa-envelope"></i> Pan Number</label>
+                  <input type="text" id="email" name="email" placeholder="{{items.user.pannumber}}" disabled>
+                  <label for="adr"><i class="fa fa-address-card-o"></i> Aadhar Number</label>
+                  <input type="text" id="adr" name="address" placeholder="{{items.user.aadharnumber}}" disabled>
+                  <label for="city"><i class="fa fa-phone"></i> Phone Number</label>
+                  <input type="text" id="city" name="city" placeholder="{{items.user.contact}}" disabled>
+      
+                  <div class="row">
+                    <div class="col-50">
+                      <label for="state">Gender</label>
+                      <input type="text" id="state" name="state" placeholder="{{items.user.gender}}" disabled>
+                    </div>
+                    <div class="col-50">
+                      <label for="zip">Age</label>
+                      <input type="text" id="zip" name="zip" placeholder="{{items.user.age}}" disabled>
+                    </div>
+                  </div>
+                </div>
+      
+                <div class="col-50">
+                  <h3>Payment</h3>
+                  <label for="fname">Accepted Cards</label>
+                  <div class="icon-container">
+                    <i class="fa fa-cc-visa" style="color:navy;"></i>
+                    <i class="fa fa-cc-amex" style="color:blue;"></i>
+                    <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                    <i class="fa fa-cc-discover" style="color:orange;"></i>
+                  </div>
+                  <label for="cname">Name on Card</label>
+                  <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+                  <label for="ccnum">Credit card number</label>
+                  <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                  <label for="expmonth">Exp Month</label>
+                  <input type="text" id="expmonth" name="expmonth" placeholder="September">
+                  <div class="row">
+                    <div class="col-50">
+                      <label for="expyear">Exp Year</label>
+                      <input type="text" id="expyear" name="expyear" placeholder="2018">
+                    </div>
+                    <div class="col-50">
+                      <label for="cvv">CVV</label>
+                      <input type="text" id="cvv" name="cvv" placeholder="352">
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+              <label>
+                <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+              </label>
+              <button type="submit" (click)="paid()" class="btn">Continue to checkout</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-25">
+          <div class="container">
+            <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>1</b></span></h4>
+            <hr>
+            <p>Bill Amount: <span class="price" style="color:black"><b>Rs.{{items.amount}}</b></span></p>
+          </div>
+        </div>
+      </div>
+</div>
+<div *ngIf="paidSuccess">
+  Thank You for Paying
+</div>
+<div class="card mb-4" style="width: 20rem;" *ngIf="items.vendor.payment_gateway==='Paytm' && !paidSuccess">
+    <div class="row">
+            <div class="col-75">
+              <div class="container">
+                <form action="/action_page.php">
+                
+                  <div class="row">
+                    <div class="col-50">
+                      <h3>Billing Address</h3>
+                      <label for="fname"><i class="fa fa-user"></i> Consumer Id</label>
+                      <input type="text" id="fname" name="firstname" placeholder="{{items.consumer_id}}" disabled>
+                      <label for="email"><i class="fa fa-envelope"></i> Pan Number</label>
+                      <input type="text" id="email" name="email" placeholder="{{items.user.pannumber}}" disabled>
+                      <label for="adr"><i class="fa fa-address-card-o"></i> Aadhar Number</label>
+                      <input type="text" id="adr" name="address" placeholder="{{items.user.aadharnumber}}" disabled>
+                      <label for="city"><i class="fa fa-phone"></i> Phone Number</label>
+                      <input type="text" id="city" name="city" placeholder="{{items.user.contact}}" disabled>
+          
+                      <div class="row">
+                        <div class="col-50">
+                          <label for="state">Gender</label>
+                          <input type="text" id="state" name="state" placeholder="{{items.user.gender}}" disabled>
+                        </div>
+                        <div class="col-50">
+                          <label for="zip">Age</label>
+                          <input type="text" id="zip" name="zip" placeholder="{{items.user.age}}" disabled>
+                        </div>
+                      </div>
+                    </div>
+          
+                    <div class="col-50">
+                      <h3>Payment</h3>
+                      <label for="fname">Accepted Payment Gateway</label>
+                      <div class="icon-container">
+                        <i class="fa fa-paypal" style="color:navy;">Paytm</i>
+              
+                      </div>
+                      <label for="cname">Name on Card</label>
+                      <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+                      <label for="ccnum">Credit card number</label>
+                      <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                      <label for="expmonth">Exp Month</label>
+                      <input type="text" id="expmonth" name="expmonth" placeholder="September">
+                      <div class="row">
+                        <div class="col-50">
+                          <label for="expyear">Exp Year</label>
+                          <input type="text" id="expyear" name="expyear" placeholder="2018">
+                        </div>
+                        <div class="col-50">
+                          <label for="cvv">CVV</label>
+                          <input type="text" id="cvv" name="cvv" placeholder="352">
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <label>
+                    <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                  </label>
+                  <button type="submit" (click)="paid()" class="btn">Continue to checkout</button>
+                </form>
+              </div>
+            </div>
+            <div class="col-25">
+              <div class="container">
+                <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>1</b></span></h4>
+                <hr>
+                <p>Bill Amount: <span class="price" style="color:black"><b>Rs.{{items.amount}}</b></span></p>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div *ngIf="paidSuccess">
+        Thank You for Paying
+      </div>
+    <div class="card mb-4" style="width: 20rem;" *ngIf="items.vendor.payment_gateway==='Googlepay' && !paidSuccess">
+        <div class="row">
+                <div class="col-75">
+                  <div class="container">
+                    <form action="/action_page.php">
+                    
+                      <div class="row">
+                        <div class="col-50">
+                          <h3>Billing Address</h3>
+                          <label for="fname"><i class="fa fa-user"></i> Consumer Id</label>
+                          <input type="text" id="fname" name="firstname" placeholder="{{items.consumer_id}}" disabled>
+                          <label for="email"><i class="fa fa-envelope"></i> Pan Number</label>
+                          <input type="text" id="email" name="email" placeholder="{{items.user.pannumber}}" disabled>
+                          <label for="adr"><i class="fa fa-address-card-o"></i> Aadhar Number</label>
+                          <input type="text" id="adr" name="address" placeholder="{{items.user.aadharnumber}}" disabled>
+                          <label for="city"><i class="fa fa-phone"></i> Phone Number</label>
+                          <input type="text" id="city" name="city" placeholder="{{items.user.contact}}" disabled>
+              
+                          <div class="row">
+                            <div class="col-50">
+                              <label for="state">Gender</label>
+                              <input type="text" id="state" name="state" placeholder="{{items.user.gender}}" disabled>
+                            </div>
+                            <div class="col-50">
+                              <label for="zip">Age</label>
+                              <input type="text" id="zip" name="zip" placeholder="{{items.user.age}}" disabled>
+                            </div>
+                          </div>
+                        </div>
+              
+                        <div class="col-50">
+                          <h3>Payment</h3>
+                          <label for="fname">Accepted Payment Gateway</label>
+                          <div class="icon-container">
+                            <i class="fa fa-google-wallet" style="color:navy;">Google Pay</i>
+                  
+                          </div>
+                          <label for="cname">Name on Card</label>
+                          <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+                          <label for="ccnum">Credit card number</label>
+                          <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                          <label for="expmonth">Exp Month</label>
+                          <input type="text" id="expmonth" name="expmonth" placeholder="September">
+                          <div class="row">
+                            <div class="col-50">
+                              <label for="expyear">Exp Year</label>
+                              <input type="text" id="expyear" name="expyear" placeholder="2018">
+                            </div>
+                            <div class="col-50">
+                              <label for="cvv">CVV</label>
+                              <input type="text" id="cvv" name="cvv" placeholder="352">
+                            </div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <label>
+                        <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                      </label>
+                      <button type="submit" (click)="paid()" class="btn">Continue to checkout</button>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-25">
+                  <div class="container">
+                    <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>1</b></span></h4>
+                    <hr>
+                    <p>Bill Amount: <span class="price" style="color:black"><b>Rs.{{items.amount}}</b></span></p>
+                  </div>
+                </div>
+              </div>
+        </div>
+    
+
+
+      </body>
+      

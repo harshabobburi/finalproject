@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'vendorlogin', component: VendorloginComponent},
   { path: 'vendorsignup', component: VendorsignupComponent},
   { path: 'edit', component: VendoreditComponent},
-  { path: 'vendorinfo', component: VendorinfoComponent},
+  { path: 'vendorinfo/:username', component: VendorinfoComponent},
   { path: 'appsearch', component: SearchComponentComponent},
   { path: 'billpayments/:username', component: BillpaymentdetailsComponent},
   { path: 'display', component: DisplayPageComponent},

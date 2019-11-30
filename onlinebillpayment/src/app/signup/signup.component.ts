@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   signupform: FormGroup;
-  
+  genders=["Male","Female"];
   constructor(private formBuilder:FormBuilder,private userService:UserServiceService,private router:Router) { }
 
   ngOnInit() {

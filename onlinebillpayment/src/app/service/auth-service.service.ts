@@ -28,7 +28,7 @@ export class AuthServiceService {
   username:string;
   isuser:boolean = false;
   isvendor:boolean=false;
-
+myrole:string;
 
   category:string
   
@@ -72,6 +72,7 @@ export class AuthServiceService {
         this.loggedInUser = user.username;
         this.validCredentials = true;
         this.username = user.username;
+        this.myrole=data.role;
         if(data.role == 'ADMIN')
           this.isAdmin = true;
           else if(data.role == 'USER')

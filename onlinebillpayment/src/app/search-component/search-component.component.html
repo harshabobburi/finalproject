@@ -8,7 +8,7 @@
 					</span>
 				</div>
 				<input type="text" placeholder="search food" name="search"
-					class="form-control" (keyup)="search($event)">
+					class="form-control" (input)="onSearch()" [(ngModel)]="searchKey">
 
 
 			</div>
@@ -18,3 +18,27 @@
 
 
   </div>
+<!-- <app-display-page [Vendor]="vendors"></app-display-page> -->
+
+<!-- 
+
+<div class="row" mb-4>
+		<div class="col-12 jumbotron search-container ">
+			<div class="search-font">Find Food</div>
+			<form>
+				<div class="form-group">
+					<div class="input-group mb-2">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<i class="material-icons">local_cafe</i>
+							</div>
+						</div>
+						<input type="text" class="form-control" name="search" id="inlineFormInputGroup"
+							placeholder="Search food" (input)="onSearch()" [(ngModel)]="searchKey">
+					</div>
+	
+				</div>
+			</form>
+		</div>
+	</div>
+	 -->

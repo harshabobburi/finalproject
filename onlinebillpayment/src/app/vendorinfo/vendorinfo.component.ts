@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthServiceService } from '../service/auth-service.service';
+import { ActivatedRoute } from '@angular/router';
+import { VendorServiceService } from '../vendor-service.service';
+import { BillpaymentServiceService } from '../billpayment-service.service';
+import { bill } from '../bill';
 
 @Component({
   selector: 'app-vendorinfo',
@@ -7,9 +12,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VendorinfoComponent implements OnInit {
 
-  constructor() { }
+  bills:bill[];
+  items:bill;
+  paidSuccess:boolean=false;
+
+  constructor(private authservice:AuthServiceService,private route:ActivatedRoute,private vendorservice:BillpaymentServiceService) { }
 
   ngOnInit() {
+
+    const vendorId =this.route.snapshot.paramMap.get('username');
+    console.log("vebdoir iud ="+vendorId)
+    this.vendorservice.getbillpayment(this.authservice.username).subscribe(((data)=>
+    {
+      this.bills = data;
+      console.log(data);
+      for(let i=0;i<this.bills.length;i++)
+      {
+
+        console.log("inside lioip verify "+this.bills[i].vendor.username)
+        if(this.bills[i].vendor.username==vendorId)
+        {
+        this.items=this.bills[i];}
+        console.log("Bill ITems are"+this.items);
+        
+      }
+      
+    }))
+  }
+  paid()
+  {
+    alert("Payment done")
+    this.paidSuccess=true
   }
 
-}
+  }
+
+

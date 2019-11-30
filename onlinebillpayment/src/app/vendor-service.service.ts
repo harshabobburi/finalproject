@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { vendor } from './vendorsignup/vendor';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthServiceService } from './service/auth-service.service';
 
@@ -13,8 +13,11 @@ import { AuthServiceService } from './service/auth-service.service';
 export class VendorServiceService {
 
   vendoruserExists:boolean=false;
-  subject = new Subject<string>();
+  private subject = new Subject<vendor[]>();
 
+  vendorlist:vendor[];
+  vendorlists:vendor[];
+  
   
   constructor(private router:Router,private httpclient:HttpClient,private authservice:AuthServiceService) { }
   addvendorUser(vendor:any)
@@ -68,10 +71,23 @@ export class VendorServiceService {
       return this.httpclient.put<void>(`${environment.baseUrl}`+'vendors'+"/"+username,vendor,{headers});
 
   }
-  getSubject():Subject<string>
+  getSubject():Subject<vendor[]>
   {
-    return this.subject
+    return this.subject;
   }
 
-
-}
+  getsearchvendor(name:string):vendor[]
+  {
+    this.getallvendors().subscribe(data=>this.vendorlist=data)
+    if(name!="")
+    {
+      this.vendorlists=this.vendorlist.filter(item=>
+        {
+          return item.vendor_type.toLowerCase().includes(name.toLowerCase());
+        })}
+        else{
+          this.vendorlists=this.vendorlist
+        }
+        return this.vendorlists
+        }
+      }

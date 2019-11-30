@@ -35,24 +35,37 @@
                                     </div>
                                 <div class="form-group">
                                         <label for="vendor_type">Vendor Type</label>
-                                        <input type="text" class="form-control" placeholder="Enter vendor Type"
-                                            formControlName="vendor_type" id="vendor_type">
+                                        <select name="vendor_type" class="form-control" placeholder="Enter type of Vendor" formControlName="vendor_type" id="vendor_type">
+                   
+                              
+                                                <option *ngFor="let vendortypeitem of vendortype"  [value]="vendortypeitem">{{vendortypeitem}}</option>
+                                              
+                                              </select>
+              
                                         <div class="text-danger"
                                             *ngIf="vendor_type.invalid && vendor_type.errors.required && vendor_type.touched">Vendor Type
                                             is required</div>
                                     </div>
                                     <div class="form-group">
                                             <label for="address">Address</label>
-                                            <input type="text" class="form-control" placeholder="Enter Address"
-                                                formControlName="address" id="address">
+                                            <select name="address" class="form-control" placeholder="Enter type of Vendor" formControlName="address" id="address">
+                   
+                              
+                                                    <option *ngFor="let addresstypeitem of addresstype"  [value]="addresstypeitem">{{addresstypeitem}}</option>
+                                                  
+                                                  </select>
                                             <div class="text-danger"
                                                 *ngIf="address.invalid && address.errors.required && address.touched">Address is
                                                 required</div>
                                         </div>
                                         <div class="form-group">
                                                  <label for="country">Country</label>
-                                                <input type="text" class="form-control" placeholder="Enter Country"
-                                                    formControlName="country" id="country">
+                                                 <select name="country" class="form-control" placeholder="Enter type of Vendor" formControlName="country" id="country">
+                   
+                              
+                                                        <option *ngFor="let countrytypeitem of countrytype"  [value]="countrytypeitem">{{countrytypeitem}}</option>
+                                                      
+                                                      </select>
                                                 <div class="text-danger"
                                                     *ngIf="country.invalid && country.errors.required && country.touched">Country is
                                                     required</div>
@@ -69,8 +82,12 @@
                                         </div>
                                         <div class="form-group">
                                                 <label for="state">State</label>
-                                                <input type="text" class="form-control" placeholder="Enter State"
-                                                    formControlName="state" id="state">
+                                                <select name="state" class="form-control" placeholder="Enter type of Vendor" formControlName="state" id="state">
+                   
+                              
+                                                        <option *ngFor="let statetypeitem of statetype"  [value]="statetypeitem">{{statetypeitem}}</option>
+                                                      
+                                                      </select>
                                                 <div class="text-danger"
                                                     *ngIf="state.invalid && state.errors.required && state.touched">State is required</div>
                                         </div>
@@ -124,8 +141,12 @@
                         </div>
                         <div class="form-group">
                                 <label for="payment_gateway">Payment Gateway Details</label>
-                                <input type="text" class="form-control" placeholder="Enter Gateway Details"
-                                    formControlName="payment_gateway" id="payment_gateway">
+                                <select name="payment_gateway" class="form-control" placeholder="Enter type of Vendor" formControlName="payment_gateway" id="payment_gateway">
+                   
+                              
+                                        <option *ngFor="let paymenttypeitem of paymentgatewaytype"  [value]="paymenttypeitem">{{paymenttypeitem}}</option>
+                                      
+                                      </select>
                                 <div class="text-danger"
                                     *ngIf="payment_gateway.invalid && payment_gateway.errors.required && payment_gateway.touched">Gateway Details are
                                     required</div>

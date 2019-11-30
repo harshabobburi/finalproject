@@ -12,7 +12,11 @@ import { VendorServiceService } from '../vendor-service.service';
 export class VendorsignupComponent implements OnInit {
 
   signupform: FormGroup;
-  
+  vendortype=["Electricity","Telephone","DTH","Insurance","Tax","Credit Card","Loan account","Others"];
+  addresstype=["Dlf","Kukatpally","L B Nagar"];
+  countrytype=["India","England","Australia","West Indies"];
+  statetype=["Andhra Pradesh","Telangana","Kerala","Tamil Nadu","Karnataka"];
+  paymentgatewaytype=["Debit/Credit Card","Paytm","Googlepay"];
   constructor(private formBuilder:FormBuilder,private vendorService:VendorServiceService,private router:Router) { }
 
   ngOnInit() {

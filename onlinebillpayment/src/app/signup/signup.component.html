@@ -43,8 +43,13 @@
                                         </div>
                                         <div class="form-group">
                                                  <label for="gender">Gender</label>
-                                                <input type="text" class="form-control" placeholder="Enter Gender"
-                                                    formControlName="gender" id="gender">
+                                                 <select name="gender" class="form-control" placeholder="Enter type of Vendor" formControlName="gender" id="gender">
+                   
+                              
+                                                        <option *ngFor="let item of genders"  [value]="item">{{item}}</option>
+                                                      
+                                                      </select>
+                      
                                                 <div class="text-danger"
                                                     *ngIf="gender.invalid && gender.errors.required && gender.touched">Gender is
                                                     required</div>

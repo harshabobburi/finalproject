@@ -10,7 +10,7 @@ import { AuthServiceService } from '../service/auth-service.service';
 })
 export class VendorDetailsComponent implements OnInit {
 
-  @Input() vendor:vendor[];
+  @Input() vendors:vendor;
 
   constructor(private router:Router,private authservice:AuthServiceService) { }
 
@@ -20,7 +20,7 @@ export class VendorDetailsComponent implements OnInit {
   displaydetails()
   {
     this.router.navigate(['billpayments'])
-    console.log(this.vendor)
+    console.log(this.vendors)
   }
 
 }
