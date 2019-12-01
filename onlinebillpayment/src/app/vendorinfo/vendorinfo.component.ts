@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from '../service/auth-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { VendorServiceService } from '../vendor-service.service';
 import { BillpaymentServiceService } from '../billpayment-service.service';
 import { bill } from '../bill';
@@ -16,7 +16,7 @@ export class VendorinfoComponent implements OnInit {
   items:bill;
   paidSuccess:boolean=false;
 
-  constructor(private authservice:AuthServiceService,private route:ActivatedRoute,private vendorservice:BillpaymentServiceService) { }
+  constructor(private authservice:AuthServiceService,private route:ActivatedRoute,private vendorservice:BillpaymentServiceService,private router:Router) { }
 
   ngOnInit() {
 
@@ -41,8 +41,8 @@ export class VendorinfoComponent implements OnInit {
   }
   paid()
   {
-    alert("Payment done")
-    this.paidSuccess=true
+    this.router.navigate(['app-successpage'])
+    // this.paidSuccess=true
   }
 
   }

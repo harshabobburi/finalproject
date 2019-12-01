@@ -16,6 +16,8 @@ import { DisplayPageComponent } from './display-page/display-page.component';
 import { OnlinebillsComponent } from './onlinebills/onlinebills.component';
 import { SearchComponentComponent } from './search-component/search-component.component';
 import { BillpaymentdetailsComponent } from './billpaymentdetails/billpaymentdetails.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
+import { SuccesspageComponent } from './successpage/successpage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,9 @@ import { BillpaymentdetailsComponent } from './billpaymentdetails/billpaymentdet
     DisplayPageComponent,
     OnlinebillsComponent,
     SearchComponentComponent,
-    BillpaymentdetailsComponent
+    BillpaymentdetailsComponent,
+    MainpageComponent,
+    SuccesspageComponent
   ],
   imports: [
     BrowserModule,

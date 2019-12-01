@@ -1,10 +1,10 @@
-<header>
-    <div class="container-fluid">
-		<div class="row">
-			<nav class="col-12 navbar navbar-expand-md navbar-dark " id="upbar">
+
+   
+
+			<nav class="navbar navbar-expand-md navbar-dark" id="upbar">
 
 				<h3>
-					<i class="material-icons ml-3">restaurant_menu</i>truYum
+					<i class="material-icons ml-3">payment</i>Payments
 				</h3>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#collapsibleNavbar">
@@ -16,8 +16,11 @@
 						<li class="nav-item active" *ngIf="loggedIn() && !this.foodService.isAdmin">
 							<a class="nav-link" routerLink="cart/">Cart</a>
 						</li> -->
-						<li class="nav-item nav-link active" *ngIf="loggedIn()">
-							<i class=" material-icons md30">person </i> {{this.authService.loggedInUser}}
+						<li class="nav-item active"  *ngIf="!loggedIn()">
+								<a class="nav-link" routerLink="main/">Home page</a>
+							</li>
+						<li class="nav-item  active" *ngIf="loggedIn()">
+								<a class="nav-link"><i class=" material-icons md30">person </i> {{this.authService.loggedInUser}}</a>
 						</li>
 						<li class="nav-item active" *ngIf="loggedIn()">
 							<a class="nav-link" routerLink="edit/">Edit</a>
@@ -26,28 +29,60 @@
 							<a class="nav-link">Logout</a>
                         </li>
                         <li>
-						<li class="nav-item active" (click)="clickOnAddCart()" *ngIf="!loggedIn()">
+						<li class="nav-item active" *ngIf="!loggedIn()">
 							<a class="nav-link" routerLink="login/">User Login</a>
                         </li>
                         <li>
-						<li class="nav-item active" (click)="clickOnAddCart()" *ngIf="!loggedIn()">
+						<li class="nav-item active"  *ngIf="!loggedIn()">
 							<a class="nav-link" routerLink="signup/">User Signup</a>
 						</li>
 						<li>
-								<li class="nav-item active" (click)="clickOnAddCart()" *ngIf="!loggedIn()">
+								<li class="nav-item active" *ngIf="!loggedIn()">
 									<a class="nav-link" routerLink="vendorlogin/">Vendor Login</a>
 								</li>
 								<li>
-										<li class="nav-item active" (click)="clickOnAddCart()" *ngIf="!loggedIn()">
+										<li class="nav-item active" *ngIf="!loggedIn()">
 											<a class="nav-link" routerLink="vendorsignup/">Vendor Signup</a>
 										</li>
 					</ul>
 				
 			</nav>
-			</div>
-        </div>
+		
+   
 
-	</header>
+
+	<!-- <app-mainpage></app-mainpage> -->
+	<!-- <html>
+		<head>
+			<title>Payments</title>
+
+		</head>
+		<body>
+			<header>
+
+				<div class="row">
+					<div class="logo">
+						<img src="https://st2.depositphotos.com/6628792/9630/v/950/depositphotos_96309398-stock-illustration-payment-type-icon.jpg">
+					</div>
+					<ul class="main-nav">
+						<li class="active"><a href="">Home</a></li>
+						<li class="nav-item " (click)="clickOnAddCart()" *ngIf="!loggedIn()">
+							<a class="nav-link" routerLink="login/">Login</a>
+                        </li>
+						<li class="nav-item " (click)="clickOnAddCart()" *ngIf="!loggedIn()">
+							<a class="nav-link" routerLink="signup/">User Signup</a>
+						</li>
+						<li class="nav-item	" (click)="clickOnAddCart()" *ngIf="!loggedIn()">
+							<a class="nav-link" routerLink="vendorsignup/">Vendor Signup</a>
+						</li>
+					</ul>
+				</div>
+				<div class="hero">
+					<h1>Payments Site</h1>
+				</div>
+			</header>
+		</body>
+	</html> -->
 <router-outlet></router-outlet> 
 
 <!-- <html>

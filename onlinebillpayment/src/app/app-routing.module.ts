@@ -10,6 +10,9 @@ import { DisplayPageComponent } from './display-page/display-page.component';
 import { SearchComponentComponent } from './search-component/search-component.component';
 import { OnlinebillsComponent } from './onlinebills/onlinebills.component';
 import { BillpaymentdetailsComponent } from './billpaymentdetails/billpaymentdetails.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
+import { SuccesspageComponent } from './successpage/successpage.component';
+import { VendorDetailsComponent } from './vendor-details/vendor-details.component';
 
 
 const routes: Routes = [
@@ -22,6 +25,9 @@ const routes: Routes = [
   { path: 'appsearch', component: SearchComponentComponent},
   { path: 'billpayments/:username', component: BillpaymentdetailsComponent},
   { path: 'display', component: DisplayPageComponent},
+  {path:'main',component:MainpageComponent},
+  {path:'app-successpage',component:SuccesspageComponent},
+  {path:'vendordetailss',component:VendorDetailsComponent}
 
 
 

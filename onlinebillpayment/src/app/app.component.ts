@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   ngOnInit(): void {
     this.loggedIn();
-    this.router.navigate(['search-bar']);
+    this.router.navigate(['main']);
   }
   constructor(private authService:AuthServiceService,public router: Router) {  
   }
