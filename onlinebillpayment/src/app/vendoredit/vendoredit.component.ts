@@ -22,6 +22,8 @@ export class VendoreditComponent implements OnInit {
   saved:boolean=false
   vendoruserExists:boolean=false;
   username1:String;
+  paymentgatewaytype=["Debit/Credit Card","Paytm","Googlepay"];
+
 
   //categories=["Main Course","Starters","Dessert","Drink"];
 
