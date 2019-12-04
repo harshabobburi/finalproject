@@ -18,7 +18,7 @@ export class BillpaymentServiceService {
   getbillpayment(id:string):Observable<any>
   {
     const headers = new HttpHeaders({Authorization: 'Bearer ' +this.authservice.accessToken});
-      return this.http.get<bill[]>(`${environment.baseUrl}`+`billpayments`+"/"+id,{headers});
+      return this.http.get<bill[]>(`${environment.baseUrl}`+`onlinebillpayment-service/billpayments`+"/"+id,{headers});
   }
 
   getbillpayments():Observable<any>
@@ -28,7 +28,7 @@ export class BillpaymentServiceService {
     // headers = headers.set(`Authorization`, `Bearer `+this.authservice.getToken());
     // return this.http.get<bill>(this.url+"billpayments", {headers})
     const headers = new HttpHeaders({Authorization: 'Bearer ' +this.authservice.accessToken});
-      return this.http.get<bill>(`${environment.baseUrl}`+`billpayments`+"/",{headers});
+      return this.http.get<bill>(`${environment.baseUrl}`+`onlinebillpayment-service/billpayments`+"/",{headers});
   }
 
   getSubject(): Subject<bill[]>

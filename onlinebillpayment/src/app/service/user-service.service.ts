@@ -32,6 +32,6 @@ export class UserServiceService {
   addUsers(user:user):Observable<any>
   {
     console.log(user)
-    return this.httpclient.post<user>(environment.baseUrl+'users',user)
+    return this.httpclient.post<user>(environment.baseUrl+'authenticate-service/users',user)
   }
 }

@@ -38,7 +38,7 @@ myrole:string;
     let credentials = btoa(user+':'+password);
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', 'Basic '+credentials)
-    return this.http.get(this.baseUrl+"authenticate", {headers})
+    return this.http.get(this.baseUrl+"authenticate-service/authenticate", {headers})
   }
   public setToken(token: string) {
     this.token = token;
@@ -110,8 +110,8 @@ myrole:string;
     // this.foodService.clickedOnAdd = false;
     // this.foodService.addedToCart = false;
     // this.cartservice.clearcart();
-    this.clickedOnAdd=false;
-    this.addedToCart=false;
+    // this.clickedOnAdd=false;
+    // this.addedToCart=false;
     this.router.navigate(['login']);
     // this.router.navigate(['search-bar']);
   }

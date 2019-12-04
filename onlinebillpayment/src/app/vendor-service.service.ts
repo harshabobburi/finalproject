@@ -43,13 +43,13 @@ export class VendorServiceService {
     //  let headers = new HttpHeaders();
     //  headers = headers.set('Authorization','Bearer ' + this.authservice.getToken())
     console.log(vendor)
-    return this.httpclient.post<vendor>(environment.baseUrl+'vendors',vendor)
+    return this.httpclient.post<vendor>(environment.baseUrl+'onlinebillpayment-service/vendors',vendor)
   }
 
   getvendor(username:String):Observable<any>
   {
     const headers = new HttpHeaders({Authorization: 'Bearer ' +this.authservice.accessToken});
-      return this.httpclient.get<vendor>(`${environment.baseUrl}`+`vendors`+"/"+username,{headers});
+      return this.httpclient.get<vendor>(`${environment.baseUrl}`+`onlinebillpayment-service/vendors`+"/"+username,{headers});
 
 
   }
@@ -57,18 +57,18 @@ export class VendorServiceService {
 
   {
     const headers = new HttpHeaders({Authorization: 'Bearer ' +this.authservice.accessToken});
-    return this.httpclient.get<vendor>(environment.baseUrl+"vendors",{headers})
+    return this.httpclient.get<vendor>(environment.baseUrl+"onlinebillpayment-service/vendors",{headers})
   }
 
   updatevendors(vendor:vendor):Observable<any>
   {
     const headers = new HttpHeaders({Authorization: 'Bearer ' +this.authservice.accessToken});
-      return this.httpclient.put<vendor>(`${environment.baseUrl}`+'vendors'+"/",vendor,{headers});
+      return this.httpclient.put<vendor>(`${environment.baseUrl}`+'onlinebillpayment-service/vendors'+"/",vendor,{headers});
   }
   updatevendor(vendor:vendor,username:string)
   {
     const headers = new HttpHeaders({Authorization: 'Bearer ' +this.authservice.accessToken});
-      return this.httpclient.put<void>(`${environment.baseUrl}`+'vendors'+"/"+username,vendor,{headers});
+      return this.httpclient.put<void>(`${environment.baseUrl}`+'onlinebillpayment-service/vendors'+"/"+username,vendor,{headers});
 
   }
   getSubject():Subject<vendor[]>
