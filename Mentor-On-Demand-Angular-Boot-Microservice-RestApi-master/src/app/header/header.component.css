@@ -1,0 +1,11 @@
+nav{
+  background: black;
+  color:white;
+}
+.navbar-default .navbar-header .navbar-brand > a{
+color: white;
+  text-decoration: none;
+}
+.active{
+  color: blue;
+}

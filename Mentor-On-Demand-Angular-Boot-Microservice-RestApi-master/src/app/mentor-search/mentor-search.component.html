@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-12">
+    <app-search-bar></app-search-bar>
+  </div>
+</div>
+
+<hr>
+<div class="row">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-5">
+        <app-mentor-list (onSelectingMentor)="selectedMentorDetail($event)"></app-mentor-list>
+      </div>
+      <div class="col-md-7">
+        <app-mentor-detail *ngIf="mentorData" [mentorData]="mentorData"></app-mentor-detail>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<app-mentor-detail *ngFor="let mentor of mentorArray"
+                   [mentorData]="mentor">
+</app-mentor-detail>-->

@@ -1,0 +1,6 @@
+<div class="row">
+  <div class="col-md-12 scroll">
+    <app-mentor-item *ngFor="let mentor of mentorArray"
+      [mentorData]="mentor" (selectMentorEvent)="mentorElaborate(mentor)"></app-mentor-item>
+  </div>
+</div>

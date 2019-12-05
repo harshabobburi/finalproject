@@ -1,0 +1,51 @@
+
+<form (ngSubmit)=onSubmit(f) #f="ngForm">
+  <div class="row">
+    <div class="container">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="mentorEmail">Email</label>
+          <input type="email" class="form-control" id="mentorEmail" placeholder="Email"
+                 ngModel name="mentorEmail" required email
+                 #email=ngModel>
+          <span *ngIf="!email.valid && email.touched">Please Enter a valid email</span>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="mentorPassword">Password</label>
+          <input type="password" class="form-control" id="mentorPassword" placeholder="Password"
+                 ngModel name="mentorPassword" required minlength="10"
+                 #password=ngModel>
+          <span *ngIf="!password.valid && password.touched">Password should be of minimum of 10 letters</span>
+          <span ></span>
+        </div>
+      </div>
+      <div class="form-group col-md-12">
+        <label for="mentorName">Name</label>
+        <input type="text" class="form-control" id="mentorName" placeholder="your full name"
+               ngModel name="mentorName" required >
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="mentorContactNo">Contact Number</label>
+          <input type="text" class="form-control" id="mentorContactNo"
+                 ngModel name="mentorContactNo" required minlength="10" maxlength="10" pattern="^[0-9]*$"
+                 #contactNumber=ngModel>
+          <span *ngIf="!contactNumber.valid && contactNumber.touched">Only numbers are allowed and should be of length 10</span>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="mentorExperience">Experience (in years)</label>
+          <input type="number" class="form-control" id="mentorExperience"
+                 ngModel name="mentorExperience"
+                 #mentorExperience=ngModel required min=2>
+          <span *ngIf="!mentorExperience.valid && mentorExperience.touched"></span>
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="!f.valid" >Sign Up</button>
+      </div>
+
+    </div>
+  </div>
+</form>
+

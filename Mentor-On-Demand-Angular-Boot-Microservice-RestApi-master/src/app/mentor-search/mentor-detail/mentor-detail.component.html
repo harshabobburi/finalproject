@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="panel panel-primary clearfix">
+    <div class="panel-heading clearfix"><strong>Name: </strong>{{mentorData.mentorName}}
+      <button class="btn btn-success pull-right " type="button"
+              (click)="proposeMentor(mentorData.mentorId)" *ngIf="isUserLoggedIn === 'true'">Connect Mentor</button></div>
+    <div class="panel-body"><strong>Experience: </strong>{{mentorData.mentorExperience}} yr</div>
+    <div class="panel-body"><strong>Skills: </strong>{{'Java, Python, R, ML'}}</div>
+    <div class="panel-body"><strong>Email: </strong>{{mentorData.mentorEmail}}</div>
+    <div class="panel-body"><strong>Ratings: </strong>{{'********'}}</div>
+    <div></div>
+  </div>
+</div>

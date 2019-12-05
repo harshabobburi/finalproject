@@ -1,0 +1,53 @@
+
+<form (ngSubmit)=onSubmit(f) #f="ngForm">
+  <div class="row">
+    <div class="container">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="userEmailId">Email</label>
+      <input type="email" class="form-control" id="userEmailId" placeholder="Email"
+             [(ngModel)]="userEnteredEmail" name="userEmailId" required email
+              #email=ngModel>
+      <span *ngIf="!email.valid && email.touched">Please Enter a valid email</span>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="userPassword">Password</label>
+      <input type="password" class="form-control" id="userPassword" placeholder="Password"
+             ngModel name="userPassword" required minlength="10"
+              #password=ngModel>
+      <span *ngIf="!password.valid && password.touched">Password should be of minimum of 10 letters</span>
+      <span ></span>
+    </div>
+  </div>
+  <div class="form-group col-md-12">
+    <label for="userName">Name</label>
+    <input type="text" class="form-control" id="userName" placeholder="your full name"
+           ngModel name="userName" required >
+  </div><!--
+  <div class="form-group col-md-12">
+    <label for="inputAddress2">Address 2</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+  </div>-->
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="userContactNo">Contact Number</label>
+      <input type="text" class="form-control" id="userContactNo"
+             ngModel name="userContactNo" required minlength="10" maxlength="10" pattern="^[0-9]*$"
+              #contactNumber=ngModel>
+      <span *ngIf="!contactNumber.valid && contactNumber.touched">Only numbers are allowed and should be of length 10</span>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="userDob">Date Of Birth</label>
+      <input type="date" class="form-control" id="userDob"
+             ngModel name="userDob" required min="01-01-2010">
+    </div>
+  </div>
+  <br>
+  <div class="form-group">
+  <button type="submit" class="btn btn-primary" [disabled]="!f.valid" >Sign Up</button>
+    </div>
+
+  </div>
+  </div>
+</form>
+

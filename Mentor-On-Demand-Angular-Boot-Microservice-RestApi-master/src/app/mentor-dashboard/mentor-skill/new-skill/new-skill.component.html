@@ -1,0 +1,29 @@
+
+
+<form (ngSubmit)=onSubmit(f) #f="ngForm">
+      <div class="form">
+          <strong>Skill Name :</strong>
+          <input type="text" class="form-control" id="skillName" placeholder="Skill"
+                 ngModel name="skillName" required
+                 #email=ngModel>
+          <span *ngIf="!email.valid && email.touched" style="color: red">Please Enter a skill</span>
+        <br><br>
+        <strong>Time Duration :</strong>
+          <input type="number" class="form-control" id="skillDuration" placeholder="Duration of Skill"
+                 ngModel name="skillDuration" required
+                 #password=ngModel>
+      <br>
+      <div class="checkbox" *ngFor="let option of materialOptions">
+        <label><input
+                  type="checkbox"
+                  name="{{option.value}}"
+                  ngModel
+                  [value]=true>{{option.id}}
+        </label>
+      </div>
+      <div class="form-group col-md-2">
+        <button type="submit" class="btn btn-success" [disabled]="!f.valid" >Add</button>
+      </div>
+      </div>
+</form>
+

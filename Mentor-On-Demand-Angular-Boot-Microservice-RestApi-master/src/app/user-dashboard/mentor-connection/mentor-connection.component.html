@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+
+    <!--Table-->
+    <table id="tablePreview" class="table table-bordered">
+      <!--Table head-->
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Mentor Name</th>
+        <th>Mentor Experience</th>
+        <th>Mentor Email</th>
+        <th>Connection Status</th>
+        <th>Action</th>
+
+      </tr>
+      </thead>
+      <!--Table head-->
+      <!--Table body-->
+
+      <tbody>
+      <tr *ngFor="let item of mentorArray; index as i" >
+        <th scope="row">{{i+1}}</th>
+        <td>{{item.mentorName}}</td>
+        <td>{{item.mentorExperience}}</td>
+        <td>{{item.mentorEmail}}</td>
+        <td *ngIf="mentorByUserData[i].mentorProposal; else other">Mentor Accepted</td>
+        <ng-template #other>
+          <td>On Hold</td>
+        </ng-template>
+        <td><button class="btn success" [disabled]="!mentorByUserData[i].mentorProposal">Accept</button>&nbsp;&nbsp; <button class="btn danger">Delete</button></td>
+      </tr>
+      </tbody>
+      <!--Table body-->
+    </table>
+    <!--Table-->
+
+  </div>
+</div>

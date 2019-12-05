@@ -1,0 +1,84 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div class="navbar-brand"><a href="#">Mentor On Demand</a></div>
+    </div>
+    <div class="collapse navbar-collapse " *ngIf="isUserLoggedIn==='false' && isMentorLoggedIn==='false'">
+    <ul class="nav navbar-nav navbar-right">
+    <li [routerLinkActive]="'/'"
+        [routerLinkActiveOptions]="{exact: true}"><a routerLink="/" >Home</a></li>
+    <li [routerLinkActive]="'/mentor'"
+        [routerLinkActiveOptions]="{exact: true}"><a routerLink="/mentor">Mentors</a></li>
+      <li>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown" appDropDownDirective>
+        <a class="dropdown-toggle" role="button" >Login<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/login">User Login</a></li>
+          <li><a routerLink="/mentorLogin">Mentor Login</a></li>
+        </ul>
+      </li>
+    </ul></li>
+      <li><ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" appDropDownDirective>
+          <a class="dropdown-toggle" role="button" >SignUp<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/userSignUp">User SignUp</a></li>
+            <li><a routerLink="/mentorSignUp">Mentor SignUp</a></li>
+          </ul>
+        </li>
+      </ul></li>
+    <li [routerLinkActive]="'about'"
+        [routerLinkActiveOptions]="{exact: true}"><a routerLink="/about">About</a></li>
+    </ul>
+  </div>
+
+  <!--Logged In Header-->
+
+  <div class="collapse navbar-collapse" *ngIf="isMentorLoggedIn==='true'">
+    <ul class="nav navbar-nav navbar-right">
+      <li [routerLinkActive]="'/'"
+          [routerLinkActiveOptions]="{exact: true}"><a routerLink="/mentorpage">Home</a></li>
+      <li [routerLinkActive]="'/mentor'"
+          [routerLinkActiveOptions]="{exact: true}"><a routerLink="/skills">Skills</a></li>
+      <li [routerLinkActive]="'/mentor'"
+          [routerLinkActiveOptions]="{exact: true}"><a routerLink="/payments">Students</a></li>
+      <li>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown" appDropDownDirective>
+            <a class="dropdown-toggle" role="button" >Profile<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a routerLink="/login">Update Profile</a></li>
+              <li><a routerLink="/mentorLogin">Change Password</a></li>
+            </ul>
+          </li>
+          <li ><a href="/" (click)="getMentorLogOut()">Logout</a></li>
+        </ul></li>
+    </ul>
+  </div>
+
+
+    <div class="collapse navbar-collapse" *ngIf="isUserLoggedIn==='true'">
+      <ul class="nav navbar-nav navbar-right">
+        <li [routerLinkActive]="'/'"
+            [routerLinkActiveOptions]="{exact: true}"><a routerLink="/userpage" >Home</a></li>
+        <li [routerLinkActive]="'/mentor'"
+            [routerLinkActiveOptions]="{exact: true}"><a routerLink="/connections">Connection</a></li>
+        <li>
+        <li [routerLinkActive]="'/mentor'"
+            [routerLinkActiveOptions]="{exact: true}"><a routerLink="/students">Course</a></li>
+        <li>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown" appDropDownDirective>
+              <a class="dropdown-toggle" role="button" >Profile<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a routerLink="/login">Update Profile</a></li>
+                <li><a routerLink="/mentorLogin">Change Password</a></li>
+              </ul>
+            </li>
+            <li ><a href="/" (click)="getUserLogOut()">Logout</a></li>
+          </ul></li>
+      </ul>
+    </div>
+  </div>
+</nav>
