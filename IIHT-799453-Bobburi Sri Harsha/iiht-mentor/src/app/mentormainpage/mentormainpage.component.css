@@ -1,0 +1,19 @@
+.card {
+    margin: 0 auto; /* Added */
+        float: none; /* Added */
+        /* margin-bottom: 10px; Added */
+        margin-top: 10%;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .container{
+    padding: 2px 16px;
+    background-color: white;
+  }
+
+  .crd1{
+      margin-top: 80px;
+  }

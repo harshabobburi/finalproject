@@ -1,0 +1,6 @@
+/* You can add global styles to this file, and also import other style files */
+body
+{
+    background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+            url("https://images.unsplash.com/photo-1414124488080-0188dcbb8834?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+}

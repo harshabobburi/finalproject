@@ -1,0 +1,75 @@
+version: '3'
+services:
+  iihtproject-mysql:
+    image: mysql:8.0.18
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - d:/payrolldb:/var/lib/mentor_on_Demand
+      - ./dbscripts:/docker-entrypoint-initdb.d
+
+  eureka-discovery-server:
+    image: eureka-discovery-app
+    build: eureka-discovery-server/.
+    ports:
+      - 8761:8761
+
+  searching-microservice:
+    image: search-microservice-app
+    build: searching-microservice/.
+    ports:
+      - 1234:1234
+    depends_on:
+      - iihtproject-mysql
+      - eureka-discovery-server
+    links:
+      - iihtproject-mysql
+      - eureka-discovery-server
+
+
+  training-microservice:
+    image: training-microservice-app
+    build: training-microservice/.
+    ports:
+      - 1256:1256
+    depends_on:
+      - iihtproject-mysql
+      - eureka-discovery-server
+    links:
+      - iihtproject-mysql
+      - eureka-discovery-server
+
+
+  User-Microservice:
+    image: User-Microservice-app
+    build: User-Microservice/.
+    ports:
+      - 8083:8083
+    depends_on:
+      - iihtproject-mysql
+      - eureka-discovery-server
+    links:
+      - iihtproject-mysql
+      - eureka-discovery-server
+
+
+  zuul-gateway:
+    image: zuul-gateway-app
+    build: zuul-gateway/.
+    ports:
+      - 8815:8815
+    depends_on:
+      - iihtproject-mysql
+      - eureka-discovery-server
+     
+    links:
+      - iihtproject-mysql
+      - eureka-discovery-service
+
+  IIHT:
+    image: IIHT-app
+    build: iiht-mentor/.
+    ports:
+      - 4200:80

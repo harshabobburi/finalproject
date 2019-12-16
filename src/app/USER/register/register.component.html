@@ -1,0 +1,65 @@
+<div class="card card-alignment">
+    <h2 class="mx-auto text-white">Provide more Details</h2>
+    <form class="mx-auto my-auto" [formGroup]="registrationForm" (submit)="this.register(registrationForm.value)">
+        <div class="alert-warning" *ngIf="this.userExists">Email Id Already exists</div>
+        <label for="userId" class="text-white"> Email :</label>
+        <input class="form-control" type="text" placeholder="Enter Email here" id="userId" formControlName="email">
+        <div class="text-warning" *ngIf="email.touched && email.invalid && email.errors.required">Email is required
+        </div>
+        <div class="text-warning" *ngIf="email.errors?.maxlength">Email cannot be more than 45 characters</div>
+        <div class="text-warning" *ngIf="email.errors?.minlength">Email cannot be less than 10 characters</div>
+        <div class="text-warning" *ngIf="email.errors?.email">Email provided is invalid</div>
+        <label for="firstname" class="text-white mt-4">First Name :</label>
+        <input class="form-control" type="text" placeholder="Enter First Name here" id="firstname"
+            formControlName="firstname">
+        <div class="text-warning" *ngIf="firstname.touched && firstname.invalid && firstname.errors.required">First Name
+            is required</div>
+        <div class="text-warning" *ngIf="firstname.errors?.maxlength">First Name cannot be more than 45 characters</div>
+        <div class="text-warning" *ngIf="firstname.errors?.minlength">First Name cannot be less than 3 characters</div>
+        <label for="lastname" class="text-white mt-4">Last Name :</label>
+        <input class="form-control" type="text" placeholder="Enter Last Name here" id="lastname"
+            formControlName="lastname">
+        <div class="text-warning" *ngIf="lastname.touched && lastname.invalid && lastname.errors.required">Last Name is
+            required</div>
+        <div class="text-warning" *ngIf="lastname.errors?.maxlength">Last Name cannot be more than 45 characters</div>
+        <div class="text-warning" *ngIf="lastname.errors?.minlength">Last Name cannot be less than 3 characters</div>
+        <label for="contact" class="text-white mt-4">Contact Number :</label>
+        <input class="form-control" type="text" placeholder="Enter Contact Number here" id="contact"
+            formControlName="contact">
+        <div class="text-warning" *ngIf="contact.touched && contact.invalid && contact.errors.required">Contact Number
+            is required</div>
+        <div class="text-warning" *ngIf="contact.errors?.pattern">Contact Number has to be in digits (0 - 9)</div>
+        <div class="text-warning" *ngIf="contact.errors?.maxlength||contact.errors?.minlength">Contact Number has to be
+            10 digits</div>
+        <label for="type" class="text-white mt-4">User Type :</label>
+        <select id="type" class="form-control" formControlName="type">
+            <option value disabled selected>Please select your account type</option>
+            <option value="ROLE_M">Mentor</option>
+            <option value="ROLE_U">Mentee</option>
+        </select>
+        <div class="text-warning" *ngIf="type.touched && type.invalid && type.errors.required">Account type
+            is required</div>
+        <label for="password" class="text-white mt-4">Password :</label>
+        <input class="form-control" type="password" placeholder="Enter Password here" id="password"
+            formControlName="password">
+        <div class="text-warning" *ngIf="password.touched && password.invalid && password.errors.required">Password is
+            required</div>
+        <div class="text-warning" *ngIf="password.errors?.maxlength">Password cannot be more than 15 characters</div>
+        <div class="text-warning" *ngIf="password.errors?.minlength">Password cannot be less than 3 characters</div>
+        <label for="confirmpassword" class="text-white mt-4">Confirm Password :</label>
+        <input class="form-control" type="password" placeholder="Re-enter Password here" id="confirmpassword"
+            formControlName="confirmpassword">
+        <div class="text-warning"
+            *ngIf="confirmpassword.touched && confirmpassword.invalid && confirmpassword.errors.required">Confirm
+            Password is required</div>
+        <div class="text-warning" *ngIf="confirmpassword.errors?.maxlength">Confirm Password cannot be more than 15
+            characters</div>
+        <div class="text-warning" *ngIf="confirmpassword.errors?.minlength">Confirm Password cannot be less than 3
+            characters</div>
+        <div class="text-warning" *ngIf="registrationForm.get('confirmpassword').hasError('nomatch')">Password and
+            Confirm Password do not match</div>
+        <div class="my-5">
+            <input type="submit" class="btn btn-info" value="Register" [disabled]="!registrationForm.valid">
+        </div>
+    </form>
+</div>

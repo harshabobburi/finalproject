@@ -1,0 +1,34 @@
+Steps for this application
+
+1).Its works on mysql server with username:-root and password:-password-1
+2).mysql runs on 3306
+
+
+3).Inside Database Files folder run the database file
+4).Then after run the database-data file in the same folder
+
+
+Steps to execute the Micro-Services
+
+Note:Run it in the same order
+
+1).eureka-discovery-server works with port no:-8761
+2).User-Microservice works with port no:-8083
+3).searching-microservice works with port no:-1234
+4).traning-microserice works with port no:-1256
+5).zuul-gateway works with port no:-8815
+
+
+Steps to execute Angular
+
+1)Go To iiht-mentor folder in the terminal enter ng serve
+2)Go to browser and enter http://localhost:4200
+
+
+
+Test Cases:
+
+1)Jmeter testing done and screenshots are in the Screenshots folder
+2)postman screenshots are attached for some get methods
+3)Karma testing done and attached in the Screeshot folder
+4)Junit Testing is done and attached in the Screeshot folder

@@ -1,0 +1,43 @@
+<body>
+        <h1 class="text-center">Vertical layout</h1>
+        <div class="container pt-3">
+          <div class="row justify-content-sm-center">
+            <div class="col-sm-6 col-md-4">
+        
+              <div class="card border-info text-center">
+                <div class="card-header">
+                  Mentor On Demand
+                </div>
+                <div class="card-body text-center">
+                
+                  <form class="form-signin" [formGroup]="signupform" (submit)="addSkill(signupform.value)">
+                      <div class="form-group">
+                          <label for="skill"><strong>Select Skill</strong></label>
+                          <select id="skill" class="form-control" formControlName="skill">
+                                <option value disabled selected>Please select your Skill</option>
+                                <option *ngFor="let skill of skillList" [value]="skill.name">{{skill.name}}</option>
+                            </select>  
+                          <div class="text-danger" *ngIf="skill.touched && skill.invalid && skill.errors.required">skill is required</div>
+                      </div>
+                      <div class="form-group">
+                          <label for="selfRating"><strong>selfRating</strong></label>
+                          <input type="number" class="form-control" placeholder="Enter selfRating" formControlName="selfRating" id="selfRating" required>
+                          <div class="text-danger" *ngIf="selfRating.touched && selfRating.invalid && selfRating.errors.required">selfRating is required</div>
+                      </div>
+                      <div class="form-group">
+                          <label for="yearsOfExperience"><strong>yearsOfExperience</strong></label>
+                          <input type="number" class="form-control" placeholder="Enter yearsOfExperience" formControlName="yearsOfExperience" id="yearsOfExperience" required>
+                          <div class="text-danger" *ngIf="yearsOfExperience.touched && yearsOfExperience.invalid && yearsOfExperience.errors.required">yearsOfExperience is required</div>
+                      </div>
+
+                    <button class="btn btn-lg btn-primary" type="submit" [disabled]="!signupform.valid">Add Skill</button>
+                    <input type="button" class="btn btn-blue" value="SignUp!" routerLink="/login">
+                  </form>
+                </div>
+              </div>
+              <!-- <a href="#" class="float-right">Create an account </a> -->
+            </div>
+          </div>
+        </div>
+        </body>
+    

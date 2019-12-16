@@ -1,0 +1,8 @@
+.navbg{
+    background-color: grey;
+}
+.bottomnav{
+    position: fixed;
+	width: 100%;
+    bottom: 0;
+}

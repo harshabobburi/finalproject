@@ -1,0 +1,74 @@
+<body>
+    <h1 class="text-center">Vertical layout</h1>
+    <div class="container pt-3">
+      <div class="row justify-content-sm-center">
+        <div class="col-sm-6 col-md-4">
+    
+          <div class="card border-info text-center">
+            <div class="card-header">
+              Mentor On Demand
+            </div>
+            <div class="card-body text-center">
+              <!-- <img src="https://placeimg.com/128/128/tech/sepia"> -->
+              <!-- <h4 class="text-center mx-auto">Mentor on Demand</h4> -->
+              <div class="alert-danger" *ngIf="this.userService.userExists">
+                  User already Exists
+              </div>
+              <form class="form-signin" [formGroup]="signupform" (submit)="this.userService.addUser(signupform.value)">
+                  <div class="form-group">
+                      <label for="userName"><strong>Username</strong></label>
+                      <input type="text" class="form-control" placeholder="Enter username" formControlName="userName" id="userName" required>
+                      <div class="text-danger" *ngIf="userName.touched && userName.invalid && userName.errors.required">username is required</div>
+                  </div>
+                  <div class="form-group">
+                      <label for="firstName"><strong>First Name</strong></label>
+                      <input type="text" class="form-control" placeholder="Enter first name" formControlName="firstName" id="firstName" required>
+                      <div class="text-danger" *ngIf="firstName.touched && firstName.invalid && firstName.errors.required">first  name is required</div>
+                  </div>
+                  <div class="form-group">
+                      <label for="lastName"><strong>Last Name</strong></label>
+                      <input type="text" class="form-control" placeholder="Enter last name" formControlName="lastName" id="lastName" required>
+                      <div class="text-danger" *ngIf="lastName.touched && lastName.invalid && lastName.errors.required">last name is required</div>
+                  </div>
+                <div class="form-group">
+                    <label for="contactNumber"><strong>Contact Number</strong></label>
+                    <input type="number" class="form-control" placeholder="Enter Contact Number" formControlName="contactNumber" id="contactNumber" required>
+                    <div class="text-danger" *ngIf="contactNumber.touched && contactNumber.invalid && contactNumber.errors.required">contact number is required</div>
+                    <div class="text-danger" *ngIf="contactNumber.errors?.min || contactNumber.errors?.max">contact number must be 10 characters</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="role"><strong>Role</strong></label>
+                    <select name="role" class="form-control" placeholder="Enter type of role" formControlName="role" id="role">
+                   
+                              
+                        <option *ngFor="let item of roles"  [value]="item">{{item}}</option>
+                      
+                      </select>
+                    <div class="text-danger" *ngIf="role.touched && role.invalid && role.errors.required">role is required</div>
+                </div>
+  
+
+                <div class="form-group">
+                    <label for="password"><strong>Password</strong></label> 
+                    <input type="password" class="form-control" placeholder="Enter Password" formControlName="password" id="password" required>
+                    <div class="text-danger" *ngIf="password.touched && password.invalid && password.errors.required">Password is required</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword"><strong>Confirm Password</strong></label>
+                        <input type="password" class="form-control" placeholder="Confirm Password"
+                            formControlName="confirmPassword" id="confirmPassword">
+                        <div class="text-danger" *ngIf="confirmPassword.invalid && confirmPassword.errors.required && confirmPassword.touched">
+                            Confirm the Password</div>
+                        <div class="text-danger" *ngIf="signupform.get('confirmPassword').hasError('nomatch')">
+                            Password and Confirm Password do not match</div>
+                </div>
+                <button class="btn btn-lg btn-primary" type="submit" [disabled]="!signupform.valid">Sign Up</button>
+              </form>
+            </div>
+          </div>
+          <!-- <a href="#" class="float-right">Create an account </a> -->
+        </div>
+      </div>
+    </div>
+    </body>

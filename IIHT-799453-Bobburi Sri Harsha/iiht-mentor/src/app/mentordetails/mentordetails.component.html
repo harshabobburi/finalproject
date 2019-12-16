@@ -1,0 +1,45 @@
+<body>
+        <h1 class="text-center">Vertical layout</h1>
+        <div class="container pt-3">
+          <div class="row justify-content-sm-center">
+            <div class="col-sm-6 col-md-4">
+        
+              <div class="card border-info text-center">
+                <div class="card-header">
+                  Mentor On Demand
+                </div>
+                <div class="card-body text-center">
+            
+                  <form class="form-signin" [formGroup]="signupform" (submit)="addmentor(signupform.value)">
+                      <div class="form-group">
+                          <label for="linkedinUrl"><strong>linkedinUrl</strong></label>
+                          <input type="text" class="form-control" placeholder="Enter linkedinUrl" formControlName="linkedinUrl" id="linkedinUrl" required>
+                          <div class="text-danger" *ngIf="linkedinUrl.touched && linkedinUrl.invalid && linkedinUrl.errors.required">linkedinUrl is required</div>
+                      </div>
+                      <div class="form-group">
+                          <label for="yearsOfExperience"><strong>yearsOfExperience</strong></label>
+                          <input type="text" class="form-control" placeholder="Enter yearsOfExperience" formControlName="yearsOfExperience" id="yearsOfExperience" required>
+                          <div class="text-danger" *ngIf="yearsOfExperience.touched && yearsOfExperience.invalid && yearsOfExperience.errors.required">yearsOfExperience is required</div>
+                      </div>
+                      <div class="form-group">
+                            <label for="timeslot"><strong>Time Slot</strong></label>
+                            <select class="form-control" formControlName="timeslot" [formControl]="timeslot" placeholder="timeslot" id="timeslot">
+                                    <option disabled selected value>Select Timeslot</option>
+                                    <option value="10:00-12:00">10:00-12:00</option>
+                                    <option value="14:00-16:00">14:00-16:00</option>
+                                    <option value="17:00-19:00">17:00-19:00</option>
+                                    <option value="20:00-22:00">20:00-22:00</option>
+                  
+                                </select>
+                            <div class="text-danger" *ngIf="timeslot.touched && timeslot.invalid && timeslot.errors.required">Timeslot is required</div>
+                        </div>
+                    <button class="btn btn-lg btn-primary" type="submit" [disabled]="!signupform.valid">Sign Up</button>
+                  </form>
+                </div>
+              </div>
+              <!-- <a href="#" class="float-right">Create an account </a> -->
+            </div>
+          </div>
+        </div>
+        </body>
+    
